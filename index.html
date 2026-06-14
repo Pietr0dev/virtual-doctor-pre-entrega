@@ -1,0 +1,2159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Doctor Virtual — Salud digital para organizaciones</title>
+  <meta name="description" content="Plataforma de telemedicina B2B para municipios, obras sociales, prepagas y aseguradoras. Marca blanca, múltiples especialidades, interoperabilidad HL7/FHIR." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;600;800&display=swap" rel="stylesheet" />
+  <style>
+/* ========== RESET & BASE ========== */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --green: #25CB6B;
+  --green-light: rgba(37, 203, 107, 0.08);
+  --green-mid: rgba(37, 203, 107, 0.15);
+  --blue: #183D52;
+  --cream: #F6F5F0;
+  --white: #FFFFFF;
+  --gray-50: #F9F9F9;
+  --gray-100: #F0F0EE;
+  --gray-200: #E0DFDA;
+  --gray-300: #B0AFAA;
+  --gray-400: #8A8984;
+  --gray-500: #6B6A65;
+  --gray-600: #4A4945;
+  --text: #1A1A18;
+  --text-light: #6B6A65;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 24px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,0.1);
+  --shadow-xl: 0 20px 60px rgba(0,0,0,0.12);
+  --font: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --container: 1200px;
+  --nav-height: 72px;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: var(--font);
+  font-weight: 300;
+  color: var(--text);
+  background: var(--white);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+h1, h2, h3, h4 {
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--blue);
+}
+
+h1 {
+  font-size: clamp(2.25rem, 5vw, 3.75rem);
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  letter-spacing: -0.015em;
+}
+
+h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+p {
+  color: var(--text-light);
+  font-size: 1.0625rem;
+}
+
+.section-title {
+  margin-bottom: 48px;
+  max-width: 640px;
+}
+
+.section-label {
+  display: inline-block;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--green);
+  margin-bottom: 12px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  border-radius: var(--radius-sm);
+  padding: 12px 24px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.btn-primary {
+  background: var(--green);
+  color: var(--white);
+  border-color: var(--green);
+}
+.btn-primary:hover {
+  background: #1fb85e;
+  border-color: #1fb85e;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(37, 203, 107, 0.35);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--blue);
+  border-color: var(--blue);
+}
+.btn-outline:hover {
+  background: var(--blue);
+  color: var(--white);
+  transform: translateY(-1px);
+}
+
+.btn-lg { padding: 14px 32px; font-size: 1rem; }
+.btn-block { width: 100%; }
+
+.badge {
+  display: inline-block;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--green);
+  background: var(--green-light);
+  padding: 6px 14px;
+  border-radius: 100px;
+  margin-bottom: 20px;
+}
+
+.hero-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.badge-msal {
+  color: var(--blue);
+  background: rgba(24, 61, 82, 0.08);
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--nav-height);
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(0,0,0,0.04);
+  z-index: 1000;
+  transition: box-shadow 0.3s;
+}
+.navbar.scrolled {
+  box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  font-size: 1.25rem;
+  color: var(--blue);
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+}
+
+.nav-link {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--gray-500);
+  transition: color 0.2s;
+  position: relative;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--green);
+  transition: width 0.3s;
+}
+.nav-link:hover { color: var(--blue); }
+.nav-link:hover::after { width: 100%; }
+
+.nav-cta {
+  padding: 10px 20px;
+  font-size: 0.875rem;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--blue);
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+.hero {
+  padding: calc(var(--nav-height) + 60px) 0 80px;
+  background: var(--white);
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(37,203,107,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.hero-content { max-width: 560px; }
+
+.hero-sub {
+  font-size: 1.1875rem;
+  line-height: 1.7;
+  margin: 20px 0 36px;
+}
+
+.hero-ctas {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.hero-mockup-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mockup {
+  width: 280px;
+  height: 560px;
+  background: var(--blue);
+  border-radius: 40px;
+  padding: 12px;
+  position: relative;
+  box-shadow: var(--shadow-xl);
+  z-index: 2;
+}
+
+.mockup-notch {
+  width: 120px;
+  height: 24px;
+  background: var(--blue);
+  border-radius: 0 0 16px 16px;
+  margin: -12px auto 0;
+}
+
+.mockup-screen {
+  width: 100%;
+  height: calc(100% - 20px);
+  background: var(--white);
+  border-radius: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.mockup-call {
+  text-align: center;
+}
+
+.mockup-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--green), #1fb85e);
+  margin: 0 auto 12px;
+  position: relative;
+}
+.mockup-avatar::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 40px;
+  background: var(--white);
+  border-radius: 50% 50% 0 0;
+  opacity: 0.3;
+}
+
+.mockup-name { font-weight: 600; font-size: 0.9375rem; color: var(--blue); }
+.mockup-status { font-size: 0.8125rem; color: var(--green); margin-top: 4px; }
+
+.hero-shape {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(37,203,107,0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  top: 20%;
+  left: -20%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-stats {
+  display: flex;
+  gap: 32px;
+  margin-top: 36px;
+  padding-top: 24px;
+  border-top: 1px solid var(--gray-100);
+}
+
+.hero-stat { text-align: center; }
+
+.hero-stat-num {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--blue);
+}
+.hero-stat-num small {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--green);
+}
+
+.hero-stat-label {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--gray-400);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 2px;
+}
+
+.clients {
+  padding: 60px 0;
+  background: var(--cream);
+  overflow: hidden;
+}
+
+.clients-heading {
+  text-align: center;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--gray-400);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 36px;
+}
+
+.clients-marquee {
+  overflow: hidden;
+  width: 100%;
+  background: var(--text);
+  padding: 20px 0;
+  mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+}
+
+.clients-track {
+  display: flex;
+  gap: 48px;
+  width: max-content;
+  animation: marquee 50s linear infinite;
+}
+
+.clients-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.client-logo {
+  font-weight: 800;
+  font-size: 1.125rem;
+  color: var(--white);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  transition: opacity 0.3s;
+  flex-shrink: 0;
+}
+.client-logo:hover { opacity: 0.6; }
+
+.metrics {
+  padding: 80px 0;
+  background: var(--white);
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.metric-card {
+  text-align: center;
+  padding: 40px 24px;
+}
+
+.metric-icon { margin-bottom: 16px; display: block; }
+
+.metric-number {
+  display: inline-block;
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--blue);
+  line-height: 1;
+}
+
+.metric-unit {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--green);
+  margin-left: 4px;
+}
+
+.metric-label {
+  font-size: 0.9375rem;
+  color: var(--text-light);
+  margin-top: 8px;
+}
+
+.metric-compare {
+  display: block;
+  font-size: 0.8125rem;
+  color: var(--green);
+  font-weight: 600;
+  margin-top: 6px;
+}
+
+.bento-card {
+  background: var(--white);
+  border: 1px solid var(--gray-100);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  transition: all 0.35s ease;
+}
+.bento-card:hover {
+  border-color: var(--green-mid);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.differentials {
+  padding: 80px 0;
+  background: var(--cream);
+}
+
+.diffs-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.diff-card { text-align: center; }
+
+.diff-icon {
+  width: 64px;
+  height: 64px;
+  background: var(--green-light);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+}
+
+.diff-card h3 { margin-bottom: 8px; font-size: 1.0625rem; }
+.diff-card p { font-size: 0.9375rem; }
+
+.whitelabel {
+  padding: 80px 0;
+  background: var(--white);
+}
+
+.wl-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.wl-features {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.wl-features li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9375rem;
+  color: var(--text-light);
+}
+.wl-features li::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background: var(--green);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.wl-visual {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.wl-mockups {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.wl-mockup {
+  width: 140px;
+  height: 220px;
+  background: var(--cream);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 2px dashed var(--gray-200);
+  transition: all 0.3s;
+}
+.wl-mockup:hover { border-color: var(--green); background: var(--green-light); }
+
+.wl-brand { font-weight: 600; font-size: 0.75rem; color: var(--blue); text-align: center; }
+.wl-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--green);
+}
+
+.wl-mockup-1 .wl-dot { background: #2563eb; }
+.wl-mockup-2 .wl-dot { background: #e11d48; }
+.wl-mockup-3 .wl-dot { background: #f59e0b; }
+
+.solutions {
+  padding: 80px 0;
+  background: var(--cream);
+}
+
+.solutions-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.solution-card { text-align: center; }
+
+.solution-icon {
+  width: 72px;
+  height: 72px;
+  background: var(--green-light);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+}
+
+.solution-card h3 { margin-bottom: 8px; }
+.solution-card p { font-size: 0.9375rem; }
+
+.sectors {
+  padding: 80px 0;
+  background: var(--blue);
+}
+
+.sectors .section-label {
+  color: var(--green);
+}
+
+.sectors .section-title {
+  color: var(--white);
+}
+
+.sectors-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.sector-card {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.sector-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.sector-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.sector-icon {
+  width: 56px;
+  height: 56px;
+  background: var(--green-light);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s, transform 0.3s;
+  flex-shrink: 0;
+}
+.sector-card:hover .sector-icon {
+  background: var(--green-mid);
+  transform: scale(1.05);
+}
+
+.sector-tag {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: var(--green);
+  background: var(--green-light);
+  padding: 4px 10px;
+  border-radius: 100px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+.sector-card h3 {
+  margin-bottom: 14px;
+  font-size: 1.125rem;
+}
+
+.sector-features {
+  list-style: none;
+  margin: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sector-features li {
+  font-size: 0.875rem;
+  color: var(--text-light);
+  line-height: 1.5;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.sector-features li::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  min-width: 6px;
+  margin-top: 8px;
+  background: var(--green);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.sector-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--green);
+  transition: gap 0.3s;
+}
+
+.sector-cta svg {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.3s;
+}
+
+.sector-card:hover .sector-cta {
+  gap: 10px;
+}
+
+.sector-card:hover .sector-cta svg {
+  transform: translateX(3px);
+}
+
+.cases {
+  padding: 80px 0;
+  background: var(--cream);
+}
+
+.cases-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.case-card { display: flex; flex-direction: column; }
+
+.case-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.case-logo {
+  font-weight: 800;
+  font-size: 1.0625rem;
+  color: var(--blue);
+}
+
+.case-tag {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--green);
+  background: var(--green-light);
+  padding: 4px 10px;
+  border-radius: 100px;
+}
+
+.case-card blockquote {
+  font-style: italic;
+  font-weight: 300;
+  font-size: 0.9375rem;
+  color: var(--gray-500);
+  line-height: 1.7;
+  margin-bottom: 20px;
+  flex: 1;
+}
+
+.case-result {
+  border-top: 1px solid var(--gray-100);
+  padding-top: 16px;
+}
+.case-stat {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--green);
+}
+.case-stat-label {
+  display: block;
+  font-size: 0.8125rem;
+  color: var(--text-light);
+  margin-top: 2px;
+}
+
+.cta-final {
+  padding: 80px 0;
+  background: var(--green);
+}
+
+.cta-box {
+  background: var(--white);
+  border-radius: var(--radius-xl);
+  padding: 56px 48px;
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.cta-box h2 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin-bottom: 12px;
+}
+
+.cta-box p {
+  margin-bottom: 32px;
+}
+
+.cta-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.cta-form input,
+.modal input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 2px solid var(--gray-200);
+  border-radius: var(--radius-sm);
+  font-family: var(--font);
+  font-size: 0.9375rem;
+  color: var(--text);
+  background: var(--white);
+  transition: border-color 0.25s, box-shadow 0.25s;
+  outline: none;
+}
+.cta-form input:focus,
+.modal input:focus {
+  border-color: var(--green);
+  box-shadow: 0 0 0 3px var(--green-light);
+}
+.cta-form input::placeholder,
+.modal input::placeholder {
+  color: var(--gray-300);
+}
+
+.footer {
+  background: var(--blue);
+  color: var(--white);
+  padding: 64px 0 32px;
+}
+
+.footer .logo span { color: var(--white); }
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 40px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  margin-bottom: 32px;
+}
+
+.footer p, .footer a:not(.logo) {
+  color: rgba(255,255,255,0.65);
+  font-size: 0.875rem;
+}
+
+.footer-brand p { margin-top: 16px; max-width: 320px; }
+
+.footer-social {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+.footer-social a {
+  color: rgba(255,255,255,0.5);
+  transition: color 0.3s;
+}
+.footer-social a:hover { color: var(--green); }
+
+.footer-links h4, .footer-contact h4 {
+  color: var(--white);
+  margin-bottom: 16px;
+  font-weight: 600;
+  font-size: 0.9375rem;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-links a:hover { color: var(--green); }
+
+.footer-contact p {
+  margin-bottom: 8px;
+}
+
+.footer-bottom {
+  text-align: center;
+}
+.footer-bottom p {
+  font-size: 0.8125rem;
+  color: rgba(255,255,255,0.4);
+}
+
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(4px);
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.modal-overlay.active { display: flex; }
+
+.modal {
+  background: var(--white);
+  border-radius: var(--radius-xl);
+  padding: 40px;
+  max-width: 480px;
+  width: 100%;
+  position: relative;
+  animation: modalIn 0.3s ease;
+}
+
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(0.95) translateY(10px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 1.75rem;
+  cursor: pointer;
+  color: var(--gray-300);
+  transition: color 0.2s;
+}
+.modal-close:hover { color: var(--text); }
+
+.modal h2 { margin-bottom: 8px; }
+.modal p { margin-bottom: 24px; }
+.modal form { display: flex; flex-direction: column; gap: 12px; }
+
+.about {
+  padding: 80px 0;
+  background: var(--white);
+  border-top: 1px solid var(--gray-100);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.about-content p { margin-bottom: 16px; }
+
+.about-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.about-stat-card {
+  background: var(--cream);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  text-align: center;
+  transition: all 0.3s;
+}
+.about-stat-card:hover {
+  background: var(--green-light);
+}
+
+.about-stat-num {
+  display: block;
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--blue);
+  line-height: 1;
+}
+.about-stat-label {
+  display: block;
+  font-size: 0.8125rem;
+  color: var(--text-light);
+  margin-top: 6px;
+}
+
+.specialties {
+  padding: 80px 0;
+  background: var(--white);
+}
+
+.specialties-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.specialty-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  background: var(--cream);
+  border-radius: var(--radius-sm);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--blue);
+  transition: all 0.3s;
+}
+.specialty-item:hover {
+  background: var(--green-light);
+  transform: translateY(-1px);
+}
+
+.specialty-icon {
+  width: 28px;
+  height: 28px;
+  background: var(--green-light);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.specialty-icon svg { width: 14px; height: 14px; }
+
+.card-link {
+  display: inline-block;
+  margin-top: 12px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--green);
+  transition: gap 0.3s;
+}
+.solution-card:hover .card-link { text-decoration: underline; }
+
+.section-footer-link {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.nav-link.active {
+  color: var(--blue);
+  font-weight: 600;
+}
+.nav-link.active::after { width: 100%; }
+
+.page-hero {
+  padding: calc(var(--nav-height) + 80px) 0 60px;
+  background: var(--cream);
+  text-align: center;
+}
+.page-hero h1 { margin-bottom: 16px; }
+.page-hero p { max-width: 560px; margin: 0 auto; }
+
+.page-section {
+  padding: 80px 0;
+}
+.page-section-alt {
+  background: var(--cream);
+}
+
+.detail-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.detail-num {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--green);
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.detail-content h2 { margin-bottom: 16px; }
+
+.detail-features {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.detail-features li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9375rem;
+  color: var(--text-light);
+}
+.detail-features li::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: var(--green);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.detail-visual {
+  display: flex;
+  justify-content: center;
+}
+
+.detail-placeholder {
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 4/3;
+  background: var(--green-light);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  font-weight: 600;
+  color: var(--green);
+  font-size: 1rem;
+}
+
+.detail-reverse .detail-visual { order: -1; }
+
+.sectors-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.sector-card-large {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.sector-card-icon {
+  width: 64px;
+  height: 64px;
+  background: var(--green-light);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  transition: background 0.3s;
+}
+.sector-card-large:hover .sector-card-icon { background: var(--green-mid); }
+
+.sector-card-large h2 { font-size: 1.375rem; margin-bottom: 8px; }
+.sector-card-large p { font-size: 0.9375rem; margin-bottom: 16px; }
+
+.sector-highlights {
+  list-style: none;
+  margin-bottom: auto;
+}
+.sector-highlights li {
+  font-size: 0.875rem;
+  color: var(--text-light);
+  padding: 4px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.sector-highlights li::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  background: var(--green);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.sector-card-large .sector-arrow { margin-top: 20px; }
+
+.cases-detailed-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.case-detailed { display: flex; flex-direction: column; }
+
+.case-detailed-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.case-detailed-role {
+  font-size: 0.8125rem;
+  color: var(--gray-400);
+}
+
+.case-detailed blockquote {
+  font-style: italic;
+  font-weight: 300;
+  font-size: 0.9375rem;
+  color: var(--gray-500);
+  line-height: 1.7;
+  margin-bottom: 20px;
+  flex: 1;
+}
+
+.case-detailed-results {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  border-top: 1px solid var(--gray-100);
+  padding-top: 16px;
+}
+
+.case-result-item { text-align: center; }
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.team-card {
+  text-align: center;
+}
+
+.team-avatar {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 16px;
+}
+
+.team-card h4 {
+  font-size: 1.0625rem;
+  margin-bottom: 4px;
+}
+
+.team-role {
+  font-size: 0.8125rem;
+  color: var(--text-light);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border: 2px solid var(--gray-200);
+  border-radius: var(--radius-sm);
+  font-family: var(--font);
+  font-size: 0.9375rem;
+  color: var(--text);
+  background: var(--white);
+  transition: border-color 0.25s, box-shadow 0.25s;
+  outline: none;
+}
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+  border-color: var(--green);
+  box-shadow: 0 0 0 3px var(--green-light);
+}
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: var(--gray-300);
+}
+
+.contact-form select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B6A65' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  cursor: pointer;
+}
+
+.contact-form textarea { resize: vertical; min-height: 120px; }
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contact-info-card { text-align: center; }
+.contact-info-card h3 { margin-bottom: 8px; font-size: 1rem; }
+.contact-info-card p { font-size: 0.9375rem; }
+.contact-info-card .footer-social { justify-content: center; margin-top: 12px; }
+.contact-info-card .footer-social a { color: var(--gray-300); }
+.contact-info-card .footer-social a:hover { color: var(--green); }
+
+.about-us-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.about-us-content h2 { margin-bottom: 20px; }
+.about-us-content p { margin-bottom: 16px; }
+
+.about-us-mission {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.mission-card { text-align: center; }
+.mission-card h3 {
+  color: var(--green);
+  margin-bottom: 8px;
+  font-size: 1.125rem;
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 1024px) {
+  .hero-grid { grid-template-columns: 1fr; text-align: center; }
+  .hero-content { max-width: 100%; }
+  .hero-ctas { justify-content: center; }
+  .hero-visual { display: flex; justify-content: center; }
+  .hero-stats { justify-content: center; }
+
+  .diffs-grid { grid-template-columns: repeat(2, 1fr); }
+  .solutions-grid { grid-template-columns: repeat(2, 1fr); }
+  .sectors-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .wl-grid { grid-template-columns: 1fr; text-align: center; }
+  .wl-content .section-title { margin-left: auto; margin-right: auto; }
+  .wl-features { align-items: center; }
+
+  .cases-grid { grid-template-columns: 1fr 1fr; }
+
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+
+  .about-grid { grid-template-columns: 1fr; text-align: center; }
+  .about-stats { max-width: 400px; margin: 0 auto; }
+
+  .specialties-grid { grid-template-columns: repeat(3, 1fr); }
+
+  .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .detail-row { grid-template-columns: 1fr; text-align: center; }
+  .detail-features { align-items: center; }
+  .detail-reverse .detail-visual { order: 0; }
+
+  .sectors-detail-grid { grid-template-columns: 1fr; }
+  .cases-detailed-grid { grid-template-columns: 1fr; }
+  .team-grid { grid-template-columns: repeat(2, 1fr); }
+  .contact-grid { grid-template-columns: 1fr; }
+
+  .about-us-grid { grid-template-columns: 1fr; text-align: center; }
+}
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-cta { display: none; }
+  .hamburger { display: flex; }
+
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: var(--nav-height);
+    left: 0;
+    width: 100%;
+    background: rgba(255,255,255,0.98);
+    backdrop-filter: blur(16px);
+    padding: 24px;
+    gap: 16px;
+    border-bottom: 1px solid var(--gray-100);
+  }
+  .nav-links.open + .nav-cta { display: flex; }
+
+  .clients-track { gap: 24px; }
+
+  .metrics-grid { grid-template-columns: 1fr; }
+  .diffs-grid { grid-template-columns: 1fr; }
+  .solutions-grid { grid-template-columns: 1fr; }
+  .sectors-grid { grid-template-columns: 1fr; }
+  .cases-grid { grid-template-columns: 1fr; }
+
+  .form-row { grid-template-columns: 1fr; }
+
+  .footer-grid { grid-template-columns: 1fr; text-align: center; }
+  .footer-brand p { max-width: 100%; }
+  .footer-social { justify-content: center; }
+
+  .cta-box { padding: 32px 24px; }
+
+  .metric-number { font-size: 2.5rem; }
+  h1 { font-size: 2rem; }
+
+  .hero-stats { gap: 24px; flex-wrap: wrap; }
+  .about-stats { grid-template-columns: 1fr 1fr; }
+  .specialties-grid { grid-template-columns: repeat(2, 1fr); }
+  .team-grid { grid-template-columns: 1fr 1fr; }
+  .case-detailed-results { grid-template-columns: 1fr 1fr; }
+  .sectors-detail-grid { grid-template-columns: 1fr; }
+  .cases-detailed-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .container { padding: 0 16px; }
+  .hero { padding-top: calc(var(--nav-height) + 40px); }
+  .mockup { width: 220px; height: 440px; }
+}
+</style>
+</head>
+<body>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+          <rect width="36" height="36" rx="10" fill="#25CB6B"/>
+          <path d="M12 18h12M18 12v12" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+        <span>Doctor Virtual</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="soluciones.html" class="nav-link">Soluciones</a></li>
+        <li><a href="sectores.html" class="nav-link">Sectores</a></li>
+        <li><a href="casos-de-exito.html" class="nav-link">Casos de éxito</a></li>
+        <li><a href="nosotros.html" class="nav-link">Nosotros</a></li>
+        <li><a href="contacto.html" class="nav-link">Contacto</a></li>
+      </ul>
+      <a href="contacto.html" class="btn btn-primary nav-cta">Solicitá una demo</a>
+      <button class="hamburger" id="hamburger" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero" id="hero">
+    <div class="container hero-grid">
+      <div class="hero-content fade-in">
+        <div class="hero-badges">
+          <span class="badge">Plataforma B2B de telemedicina</span>
+          <span class="badge badge-msal">Habilitación MSAL</span>
+        </div>
+        <h1>Innovación y accesibilidad en salud digital</h1>
+        <p class="hero-sub">Transformamos el acceso a la salud pública y privada de más de 4 millones de personas a través de nuestra plataforma de telemedicina white-label.</p>
+        <div class="hero-ctas">
+          <a href="contacto.html" class="btn btn-primary btn-lg">Solicitá una demo</a>
+          <a href="casos-de-exito.html" class="btn btn-outline btn-lg">Ver casos de éxito</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <span class="hero-stat-num">3 <small>min</small></span>
+            <span class="hero-stat-label">espera promedio</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-num">92<small>%</small></span>
+            <span class="hero-stat-label">satisfacción</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-num">4<small>M+</small></span>
+            <span class="hero-stat-label">pacientes</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual fade-in">
+        <div class="hero-mockup-wrapper">
+          <div class="mockup">
+            <div class="mockup-notch"></div>
+            <div class="mockup-screen">
+              <div class="mockup-call">
+                <div class="mockup-avatar"></div>
+                <div class="mockup-name">Dra. Laura Méndez</div>
+                <div class="mockup-status">● En consulta</div>
+              </div>
+            </div>
+          </div>
+          <div class="hero-shape"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SOCIAL PROOF ========== -->
+  <section class="clients" id="clientes">
+    <div class="container">
+      <p class="clients-heading fade-in">Más de 40 organizaciones confían en nosotros</p>
+      <div class="clients-marquee fade-in">
+        <div class="clients-track">
+          <span class="client-logo">OBSBA</span>
+          <span class="client-logo">Unión Personal</span>
+          <span class="client-logo">OSEP</span>
+          <span class="client-logo">OSEF</span>
+          <span class="client-logo">IOSPER</span>
+          <span class="client-logo">OSPERYH</span>
+          <span class="client-logo">Alte. Brown</span>
+          <span class="client-logo">San Vicente</span>
+          <span class="client-logo">Tres de Febrero</span>
+          <span class="client-logo">Ezeiza</span>
+          <span class="client-logo">Cañuelas</span>
+          <span class="client-logo">Mar del Plata</span>
+          <span class="client-logo">Quilmes</span>
+          <span class="client-logo">Bahía Blanca</span>
+          <span class="client-logo">Olavarría</span>
+          <span class="client-logo">Pinamar</span>
+          <span class="client-logo">Chivilcoy</span>
+          <span class="client-logo">Bell Ville</span>
+          <span class="client-logo">Malvinas Argentinas</span>
+          <span class="client-logo">Gral. Villegas</span>
+          <span class="client-logo">Pehuajó</span>
+          <span class="client-logo">Lanús</span>
+          <span class="client-logo">Lomas de Zamora</span>
+          <span class="client-logo">Tres Arroyos</span>
+          <span class="client-logo">Chacabuco</span>
+          <span class="client-logo">Escobar</span>
+          <span class="client-logo">Florencio Varela</span>
+          <span class="client-logo">Meridional Seguros</span>
+          <span class="client-logo">CAMINOA</span>
+          <span class="client-logo">Gimnasia LP</span>
+          <span class="client-logo">OBSBA</span>
+          <span class="client-logo">Unión Personal</span>
+          <span class="client-logo">OSEP</span>
+          <span class="client-logo">OSEF</span>
+          <span class="client-logo">IOSPER</span>
+          <span class="client-logo">OSPERYH</span>
+          <span class="client-logo">Alte. Brown</span>
+          <span class="client-logo">San Vicente</span>
+          <span class="client-logo">Tres de Febrero</span>
+          <span class="client-logo">Ezeiza</span>
+          <span class="client-logo">Cañuelas</span>
+          <span class="client-logo">Mar del Plata</span>
+          <span class="client-logo">Quilmes</span>
+          <span class="client-logo">Bahía Blanca</span>
+          <span class="client-logo">Olavarría</span>
+          <span class="client-logo">Pinamar</span>
+          <span class="client-logo">Chivilcoy</span>
+          <span class="client-logo">Bell Ville</span>
+          <span class="client-logo">Malvinas Argentinas</span>
+          <span class="client-logo">Gral. Villegas</span>
+          <span class="client-logo">Pehuajó</span>
+          <span class="client-logo">Lanús</span>
+          <span class="client-logo">Lomas de Zamora</span>
+          <span class="client-logo">Tres Arroyos</span>
+          <span class="client-logo">Chacabuco</span>
+          <span class="client-logo">Escobar</span>
+          <span class="client-logo">Florencio Varela</span>
+          <span class="client-logo">Meridional Seguros</span>
+          <span class="client-logo">CAMINOA</span>
+          <span class="client-logo">Gimnasia LP</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== ABOUT / QUIÉNES SOMOS ========== -->
+  <section class="about" id="nosotros">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-content fade-in">
+          <div class="section-label">Quiénes somos</div>
+          <h2 class="section-title">Transformamos el acceso a la salud pública y privada</h2>
+          <p>Somos una empresa argentina de salud digital que moderniza el acceso al sistema de salud público y privado. A través de nuestra plataforma de telemedicina white-label, más de 40 organizaciones —municipios, obras sociales, prepagas, aseguradoras y empresas— brindan atención médica de calidad a sus comunidades.</p>
+          <a href="nosotros.html" class="btn btn-outline" style="margin-top:24px">Conocenos</a>
+        </div>
+        <div class="about-stats fade-in">
+          <div class="about-stat-card">
+            <span class="about-stat-num">4.8/5</span>
+            <span class="about-stat-label">Valoración de pacientes</span>
+          </div>
+          <div class="about-stat-card">
+            <span class="about-stat-num">25+</span>
+            <span class="about-stat-label">Municipios activos</span>
+          </div>
+          <div class="about-stat-card">
+            <span class="about-stat-num">10+</span>
+            <span class="about-stat-label">Obras sociales asociadas</span>
+          </div>
+          <div class="about-stat-card">
+            <span class="about-stat-num">+40</span>
+            <span class="about-stat-label">Organizaciones confían</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== METRICS ========== -->
+  <section class="metrics" id="metrics">
+    <div class="container">
+      <div class="section-label fade-in" style="text-align:center">Datos que nos respaldan</div>
+      <h2 class="section-title fade-in" style="text-align:center;margin:0 auto 48px">Resultados que hablan por sí solos</h2>
+      <div class="metrics-grid">
+        <div class="metric-card bento-card fade-in">
+          <span class="metric-icon">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+              <path d="M16 2L20 10L29 11L22 17L24 26L16 21L8 26L10 17L3 11L12 10L16 2Z" fill="#25CB6B"/>
+            </svg>
+          </span>
+          <span class="metric-number" data-target="92">0</span>
+          <span class="metric-unit">%</span>
+          <p class="metric-label">Satisfacción de pacientes</p>
+        </div>
+        <div class="metric-card bento-card fade-in">
+          <span class="metric-icon">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+              <circle cx="16" cy="16" r="14" stroke="#25CB6B" stroke-width="2"/>
+              <path d="M16 8v8l5 3" stroke="#25CB6B" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <span class="metric-number" data-target="4">0</span>
+          <span class="metric-unit">M+</span>
+          <p class="metric-label">Personas alcanzadas</p>
+        </div>
+        <div class="metric-card bento-card fade-in">
+          <span class="metric-icon">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+              <path d="M4 16l8 8L28 8" stroke="#25CB6B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="metric-number" data-target="3">0</span>
+          <span class="metric-unit">min</span>
+          <p class="metric-label">Tiempo promedio de espera</p>
+          <span class="metric-compare">de 3 hs a 3 min</span>
+        </div>
+        <div class="metric-card bento-card fade-in">
+          <span class="metric-icon">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+              <circle cx="16" cy="16" r="14" stroke="#25CB6B" stroke-width="2"/>
+              <path d="M10 16l4 4 8-8" stroke="#25CB6B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="metric-number" data-target="48">0</span>
+          <span class="metric-unit">/5</span>
+          <p class="metric-label">Valoración de pacientes</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== DIFFERENTIALS ========== -->
+  <section class="differentials" id="diferenciales">
+    <div class="container">
+      <div class="section-label fade-in">Nuestros diferenciales</div>
+      <h2 class="section-title fade-in">Por qué elegir Doctor Virtual</h2>
+      <div class="diffs-grid">
+        <div class="diff-card bento-card fade-in">
+          <div class="diff-icon">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+              <rect x="4" y="8" width="32" height="24" rx="3" stroke="#25CB6B" stroke-width="2"/>
+              <path d="M12 16h16M12 22h10" stroke="#25CB6B" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Marca blanca</h3>
+          <p>La plataforma con el branding de cada cliente. Tu logo, tus colores, tu dominio.</p>
+        </div>
+        <div class="diff-card bento-card fade-in">
+          <div class="diff-icon">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+              <circle cx="20" cy="16" r="8" stroke="#25CB6B" stroke-width="2"/>
+              <path d="M12 32c0-4.4 3.6-8 8-8s8 3.6 8 8" stroke="#25CB6B" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Múltiples especialidades</h3>
+          <p>Más de 12 especialidades médicas disponibles 24/7 vía videollamada.</p>
+        </div>
+        <div class="diff-card bento-card fade-in">
+          <div class="diff-icon">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+              <path d="M8 20l8-8 6 6L34 8" stroke="#25CB6B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M28 8h6v6" stroke="#25CB6B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>Habilitación Ministerio de Salud</h3>
+          <p>Plataforma que cumple con los marcos regulatorios vigentes en Argentina.</p>
+        </div>
+        <div class="diff-card bento-card fade-in">
+          <div class="diff-icon">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+              <rect x="4" y="6" width="12" height="12" rx="2" stroke="#25CB6B" stroke-width="2"/>
+              <rect x="24" y="6" width="12" height="12" rx="2" stroke="#25CB6B" stroke-width="2"/>
+              <rect x="4" y="22" width="12" height="12" rx="2" stroke="#25CB6B" stroke-width="2"/>
+              <rect x="24" y="22" width="12" height="12" rx="2" stroke="#25CB6B" stroke-width="2"/>
+              <path d="M10 12h0M16 12h0M10 28h0M16 28h0" stroke="#25CB6B" stroke-width="2"/>
+            </svg>
+          </div>
+          <h3>Integración e interoperabilidad</h3>
+          <p>Nos integramos con tus sistemas existentes: padrones, HC, ERPs y turnos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== WHITE LABEL ========== -->
+  <section class="whitelabel" id="whitelabel">
+    <div class="container">
+      <div class="wl-grid">
+        <div class="wl-content fade-in">
+          <div class="section-label">Marca blanca</div>
+          <h2 class="section-title">Tu plataforma, tu identidad. Nosotros ponemos la tecnología.</h2>
+          <p>Personalizá cada detalle de la experiencia de telemedicina con los colores, logo y naming de tu organización. Implementación en semanas, no meses.</p>
+          <ul class="wl-features">
+            <li>Branding 100% personalizable</li>
+            <li>App white-label para iOS y Android</li>
+            <li>Panel de administración propio</li>
+            <li>Soporte y actualizaciones incluidas</li>
+          </ul>
+        </div>
+        <div class="wl-visual fade-in">
+          <div class="wl-mockups">
+            <div class="wl-mockup wl-mockup-1">
+              <span class="wl-brand">Municipio</span>
+              <span class="wl-dot"></span>
+            </div>
+            <div class="wl-mockup wl-mockup-2">
+              <span class="wl-brand">Obra Social</span>
+              <span class="wl-dot"></span>
+            </div>
+            <div class="wl-mockup wl-mockup-3">
+              <span class="wl-brand">Prepagas</span>
+              <span class="wl-dot"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SOLUTIONS ========== -->
+  <section class="solutions" id="soluciones">
+    <div class="container">
+      <div class="section-label fade-in">Soluciones</div>
+      <h2 class="section-title fade-in">Todo lo que necesitás para tu salud digital</h2>
+      <div class="solutions-grid">
+        <div class="solution-card bento-card fade-in">
+          <div class="solution-icon">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+              <rect x="8" y="12" width="32" height="24" rx="4" stroke="#25CB6B" stroke-width="2"/>
+              <circle cx="24" cy="24" r="6" stroke="#25CB6B" stroke-width="2"/>
+              <path d="M16 20v8M32 20v8" stroke="#25CB6B" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Telemedicina 24/7</h3>
+          <p>Consultas por videollamada con múltiples especialidades, recetas y certificados digitales.</p>
+          <a href="soluciones.html" class="card-link">Ver más &rarr;</a>
+        </div>
+        <div class="solution-card bento-card fade-in">
+          <div class="solution-icon">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+              <rect x="8" y="10" width="32" height="28" rx="4" stroke="#25CB6B" stroke-width="2"/>
+              <path d="M16 18h16M16 24h12M16 30h8" stroke="#25CB6B" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Sala de espera virtual</h3>
+          <p>Contenido audiovisual educativo mientras el paciente espera su atención. Sin espera presencial.</p>
+          <a href="soluciones.html" class="card-link">Ver más &rarr;</a>
+        </div>
+        <div class="solution-card bento-card fade-in">
+          <div class="solution-icon">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+              <path d="M24 6c-4 0-8 6-8 12s4 8 8 8 8-2 8-8-4-12-8-12z" stroke="#25CB6B" stroke-width="2"/>
+              <path d="M14 34c0-5 4.5-8 10-8s10 3 10 8" stroke="#25CB6B" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="24" cy="14" r="2" fill="#25CB6B"/>
+            </svg>
+          </div>
+          <h3>Programa de Salud Mental</h3>
+          <p>Primera escucha psicológica 24/7 con derivación asistida cuando se requiere.</p>
+          <a href="soluciones.html" class="card-link">Ver más &rarr;</a>
+        </div>
+        <div class="solution-card bento-card fade-in">
+          <div class="solution-icon">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+              <rect x="6" y="12" width="36" height="24" rx="4" stroke="#25CB6B" stroke-width="2"/>
+              <rect x="10" y="16" width="28" height="16" rx="2" fill="#25CB6B" fill-opacity="0.1"/>
+              <path d="M18 24h12M24 20v8" stroke="#25CB6B" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Consultorios Virtuales (Tótems)</h3>
+          <p>Unidades físicas de atención médica virtual instaladas en espacios públicos.</p>
+          <a href="soluciones.html" class="card-link">Ver más &rarr;</a>
+        </div>
+      </div>
+      <div class="section-footer-link fade-in">
+        <a href="soluciones.html" class="btn btn-outline">Ver todas las soluciones</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== ESPECIALIDADES ========== -->
+  <section class="specialties" id="especialidades">
+    <div class="container">
+      <div class="section-label fade-in">Especialidades médicas</div>
+      <h2 class="section-title fade-in">Más de 12 especialidades disponibles 24/7</h2>
+      <div class="specialties-grid fade-in">
+        <div class="specialty-item">
+          <span class="specialty-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 4v16M4 12h16" stroke="#25CB6B" stroke-width="2" stroke-linecap="round"/></svg>
+          </span>
+          <span>Clínica médica</span>
+        </div>
+        <div class="specialty-item">
+          <span class="specialty-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 4v16M4 12h16" stroke="#25CB6B" stroke-width="2" stroke-linecap="round"/></svg></span>
+          <span>Pediatría</span>
+        </div>
+        <div class="specialty-item">
+          <span class="specialty-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 4v16M4 12h16" stroke="#25CB6B" stroke-width="2" stroke-linecap="round"/></svg></span>
+          <span>Ginecología</span>
+        </div>
+        <div class="specialty-item">
+          <span class="specialty-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 4v16M4 12h16" stroke="#25CB6B" stroke-width="2" stroke-linecap="round"/></svg></span>
+          <span>Dermatología</span>
+        </div>
+        <div class="specialty-item">
+          <span class="specialty-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 4v16M4 12h16" stroke="#25CB6B" stroke-width="2" stroke-linecap="round"/></svg></span>
+          <span>Salud mental</span>
+        </div>
+        <div class="specialty-item">
+          <span class="specialty-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 4v16M4 12h16" stroke="#25CB6B" stroke-width="2" stroke-linecap="round"/></svg></span>
+          <span>Nutrición</span>
+        </div>
+        <div class="specialty-item">
+          <span class="specialty-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 4v16M4 12h16" stroke="#25CB6B" stroke-width="2" stroke-linecap="round"/></svg></span>
+          <span>Cardiología</span>
+        </div>
+        <div class="specialty-item">
+          <span class="specialty-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 4v16M4 12h16" stroke="#25CB6B" stroke-width="2" stroke-linecap="round"/></svg></span>
+          <span>Traumatología</span>
+        </div>
+        <div class="specialty-item">
+          <span class="specialty-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 4v16M4 12h16" stroke="#25CB6B" stroke-width="2" stroke-linecap="round"/></svg></span>
+          <span>Oftalmología</span>
+        </div>
+        <div class="specialty-item">
+          <span class="specialty-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 4v16M4 12h16" stroke="#25CB6B" stroke-width="2" stroke-linecap="round"/></svg></span>
+          <span>Neurología</span>
+        </div>
+        <div class="specialty-item">
+          <span class="specialty-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 4v16M4 12h16" stroke="#25CB6B" stroke-width="2" stroke-linecap="round"/></svg></span>
+          <span>Endocrinología</span>
+        </div>
+        <div class="specialty-item">
+          <span class="specialty-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 4v16M4 12h16" stroke="#25CB6B" stroke-width="2" stroke-linecap="round"/></svg></span>
+          <span>Neumonología</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SECTORS ========== -->
+  <section class="sectors" id="sectores">
+    <div class="container">
+      <div class="section-label fade-in">Sectores</div>
+      <h2 class="section-title fade-in">Soluciones adaptadas a cada organización</h2>
+      <div class="sectors-grid">
+        <a href="municipios.html" class="sector-card bento-card fade-in">
+          <div class="sector-card-top">
+            <div class="sector-icon">
+              <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                <rect x="4" y="8" width="32" height="24" rx="3" stroke="#25CB6B" stroke-width="2"/>
+                <path d="M12 16l4 4 6-6" stroke="#25CB6B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <span class="sector-tag">Público</span>
+          </div>
+          <h3>Entidades públicas de salud</h3>
+          <ul class="sector-features">
+            <li>Respuesta médica inmediata</li>
+            <li>Gran porcentaje de casos resueltos mediante videollamada</li>
+            <li>Acceso al sistema público de salud online</li>
+          </ul>
+          <span class="sector-cta">Ver más <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </a>
+        <a href="empresas.html" class="sector-card bento-card fade-in">
+          <div class="sector-card-top">
+            <div class="sector-icon">
+              <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                <rect x="6" y="8" width="28" height="24" rx="3" stroke="#25CB6B" stroke-width="2"/>
+                <circle cx="20" cy="18" r="4" stroke="#25CB6B" stroke-width="2"/>
+                <path d="M14 28c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="#25CB6B" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <span class="sector-tag">Empresas</span>
+          </div>
+          <h3>Medicina laboral para empresas</h3>
+          <ul class="sector-features">
+            <li>Mejora y preserva el bienestar de tus colaboradores</li>
+            <li>Fideliza a tus empleados con un beneficio innovador</li>
+            <li>Fortalece la imagen corporativa y el clima laboral</li>
+          </ul>
+          <span class="sector-cta">Ver más <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </a>
+        <a href="obras-sociales.html" class="sector-card bento-card fade-in">
+          <div class="sector-card-top">
+            <div class="sector-icon">
+              <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                <path d="M8 6h24v28H8z" stroke="#25CB6B" stroke-width="2"/>
+                <path d="M16 6v28M24 6v28" stroke="#25CB6B" stroke-width="2"/>
+              </svg>
+            </div>
+            <span class="sector-tag">Salud</span>
+          </div>
+          <h3>Obras sociales y prepagas</h3>
+          <ul class="sector-features">
+            <li>Ahorros de prestaciones gracias a nuestra atención primaria virtual</li>
+            <li>El 85% de los casos son resueltos durante la videollamada</li>
+            <li>Vademécum online e historia clínica digital</li>
+          </ul>
+          <span class="sector-cta">Ver más <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </a>
+        <a href="aseguradoras.html" class="sector-card bento-card fade-in">
+          <div class="sector-card-top">
+            <div class="sector-icon">
+              <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                <path d="M6 14l14-8 14 8v12l-14 8-14-8V14z" stroke="#25CB6B" stroke-width="2"/>
+                <path d="M14 18l6 4 8-6" stroke="#25CB6B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <span class="sector-tag">Seguros</span>
+          </div>
+          <h3>Empresas aseguradoras</h3>
+          <ul class="sector-features">
+            <li>Servicio diferencial para tus asegurados y clientes</li>
+            <li>Brinda un beneficio atractivo relacionado con la salud del asegurado y su familia</li>
+            <li>Fideliza a tus asegurados y clientes</li>
+          </ul>
+          <span class="sector-cta">Ver más <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CASE STUDIES ========== -->
+  <section class="cases" id="casos">
+    <div class="container">
+      <div class="section-label fade-in">Casos de éxito</div>
+      <h2 class="section-title fade-in">Resultados que hablan por sí solos</h2>
+      <div class="cases-grid">
+        <div class="case-card bento-card fade-in">
+          <div class="case-header">
+            <span class="case-logo">OBSBA</span>
+            <span class="case-tag">Municipio</span>
+          </div>
+          <blockquote>"La implementación de Doctor Virtual nos permitió multiplicar nuestra capacidad de atención y mejorar significativamente la experiencia de nuestros afiliados."</blockquote>
+          <div class="case-result">
+            <span class="case-stat">+120K</span>
+            <span class="case-stat-label">consultas virtuales al año</span>
+          </div>
+        </div>
+        <div class="case-card bento-card fade-in">
+          <div class="case-header">
+            <span class="case-logo">Unión Personal</span>
+            <span class="case-tag">Obra Social</span>
+          </div>
+          <blockquote>"Logramos que el 92% de los afiliados valore el servicio como excelente. El tiempo de espera pasó de 3 horas a 3 minutos."</blockquote>
+          <div class="case-result">
+            <span class="case-stat">98%</span>
+            <span class="case-stat-label">de adherencia al programa</span>
+          </div>
+        </div>
+        <div class="case-card bento-card fade-in">
+          <div class="case-header">
+            <span class="case-logo">OSEP</span>
+            <span class="case-tag">Provincia</span>
+          </div>
+          <blockquote>"Implementamos telemedicina en 40 centros de atención primaria en 3 meses. Hoy es el canal de consulta más usado."</blockquote>
+          <div class="case-result">
+            <span class="case-stat">40</span>
+            <span class="case-stat-label">centros conectados</span>
+          </div>
+        </div>
+      </div>
+      <div class="section-footer-link fade-in">
+        <a href="casos-de-exito.html" class="btn btn-outline">Ver todos los casos</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA FINAL ========== -->
+  <section class="cta-final" id="contacto">
+    <div class="container">
+      <div class="cta-box fade-in">
+        <h2>¿Querés implementar Doctor Virtual en tu organización?</h2>
+        <p>Completá el formulario y un ejecutivo comercial te contactará en 24 hs.</p>
+        <form class="cta-form" id="demoForm">
+          <div class="form-row">
+            <input type="text" name="nombre" placeholder="Nombre completo" required />
+            <input type="text" name="empresa" placeholder="Empresa / Organización" required />
+          </div>
+          <div class="form-row">
+            <input type="email" name="email" placeholder="Email corporativo" required />
+            <input type="tel" name="telefono" placeholder="Teléfono" />
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg btn-block">Enviar solicitud</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+              <rect width="36" height="36" rx="10" fill="#25CB6B"/>
+              <path d="M12 18h12M18 12v12" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+            </svg>
+            <span>Doctor Virtual</span>
+          </a>
+          <p>Transformamos el acceso a la salud pública y privada a través de nuestra plataforma de telemedicina white-label.</p>
+          <div class="footer-social">
+            <a href="https://instagram.com/doctorvirtual.ai" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.5"/>
+                <circle cx="17" cy="7" r="1" fill="currentColor"/>
+                <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            </a>
+            <a href="https://linkedin.com/company/doctorvirtual" target="_blank" rel="noopener" aria-label="LinkedIn">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <rect x="3" y="3" width="18" height="18" rx="4" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M8 11v5M8 8v.01M12 16v-4M16 16v-2.5a2.5 2.5 0 0 0-5 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h4>Navegación</h4>
+          <a href="index.html">Inicio</a>
+          <a href="soluciones.html">Soluciones</a>
+          <a href="casos-de-exito.html">Casos de éxito</a>
+          <a href="nosotros.html">Nosotros</a>
+          <a href="contacto.html">Contacto</a>
+        </div>
+        <div class="footer-links">
+          <h4>Sectores</h4>
+          <a href="municipios.html">Municipios</a>
+          <a href="obras-sociales.html">Obras Sociales</a>
+          <a href="aseguradoras.html">Aseguradoras</a>
+          <a href="empresas.html">Empresas</a>
+        </div>
+        <div class="footer-contact">
+          <h4>Contacto</h4>
+          <p>Av. Córdoba 991, 1° piso<br/>CABA, Argentina</p>
+          <a href="mailto:contacto@doctorvirtual.ai">contacto@doctorvirtual.ai</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Doctor Virtual S.A. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL DEMO -->
+  <div class="modal-overlay" id="demoModal">
+    <div class="modal">
+      <button class="modal-close" id="modalClose" aria-label="Cerrar">&times;</button>
+      <h2>Solicitá una demo</h2>
+      <p>Completá tus datos y te contactamos en 24 hs.</p>
+      <form id="modalForm">
+        <input type="text" name="nombre" placeholder="Nombre completo" required />
+        <input type="text" name="empresa" placeholder="Empresa / Organización" required />
+        <input type="email" name="email" placeholder="Email corporativo" required />
+        <input type="tel" name="telefono" placeholder="Teléfono" />
+        <button type="submit" class="btn btn-primary btn-lg btn-block">Enviar</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL BROCHURE -->
+  <div class="modal-overlay" id="brochureModal">
+    <div class="modal">
+      <button class="modal-close" id="brochureClose" aria-label="Cerrar">&times;</button>
+      <h2>Descargá nuestro brochure</h2>
+      <p>Conocé todos los detalles de nuestra plataforma.</p>
+      <form id="brochureForm">
+        <input type="text" name="nombre" placeholder="Nombre completo" required />
+        <input type="email" name="email" placeholder="Email corporativo" required />
+        <input type="text" name="empresa" placeholder="Empresa / Organización" required />
+        <button type="submit" class="btn btn-primary btn-lg btn-block">Descargar brochure</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

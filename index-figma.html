@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Doctor Virtual — Salud digital para organizaciones</title>
+  <meta name="description" content="Plataforma de telemedicina B2B para municipios, obras sociales, prepagas y aseguradoras." />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Manrope', Arial, sans-serif; font-weight: 300; color: #1A1A18; background: #FFFFFF; line-height: 1.6; }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+  </style>
+</head>
+<body>
+
+  <!-- ========== NAVBAR ========== -->
+  <div style="position:fixed;top:0;left:0;width:100%;height:72px;background:rgba(255,255,255,0.85);border-bottom:1px solid rgba(0,0,0,0.04);z-index:1000;">
+    <div style="width:100%;max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:100%;">
+      <a href="index.html" style="display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.25rem;color:#183D52;">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+          <rect width="36" height="36" rx="10" fill="#25CB6B"/>
+          <path d="M12 18h12M18 12v12" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+        <span>Doctor Virtual</span>
+      </a>
+      <ul style="display:flex;gap:32px;list-style:none;">
+        <li><a href="soluciones.html" style="font-size:0.9375rem;font-weight:500;color:#6B6A65;">Soluciones</a></li>
+        <li><a href="sectores.html" style="font-size:0.9375rem;font-weight:500;color:#6B6A65;">Sectores</a></li>
+        <li><a href="casos-de-exito.html" style="font-size:0.9375rem;font-weight:500;color:#6B6A65;">Casos de éxito</a></li>
+        <li><a href="nosotros.html" style="font-size:0.9375rem;font-weight:500;color:#6B6A65;">Nosotros</a></li>
+        <li><a href="contacto.html" style="font-size:0.9375rem;font-weight:500;color:#6B6A65;">Contacto</a></li>
+      </ul>
+      <a href="contacto.html" style="display:inline-flex;align-items:center;justify-content:center;font-family:inherit;font-weight:600;font-size:0.875rem;border-radius:8px;padding:10px 20px;border:2px solid #25CB6B;background:#25CB6B;color:#FFFFFF;cursor:pointer;">Solicitá una demo</a>
+    </div>
+  </div>
+
+  <!-- ========== HERO ========== -->
+  <div style="padding:132px 0 80px;background:#FFFFFF;position:relative;overflow:hidden;">
+    <div style="width:100%;max-width:1200px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;">
+      <div style="max-width:560px;">
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:4px;">
+          <span style="display:inline-block;font-size:0.8125rem;font-weight:600;color:#25CB6B;background:rgba(37,203,107,0.08);padding:6px 14px;border-radius:100px;margin-bottom:20px;">Plataforma B2B de telemedicina</span>
+          <span style="display:inline-block;font-size:0.8125rem;font-weight:600;color:#183D52;background:rgba(24,61,82,0.08);padding:6px 14px;border-radius:100px;margin-bottom:20px;">Habilitación MSAL</span>
+        </div>
+        <h1 style="font-weight:800;line-height:1.15;color:#183D52;font-size:60px;letter-spacing:-0.02em;">Innovación y accesibilidad en salud digital</h1>
+        <p style="color:#6B6A65;font-size:1.1875rem;line-height:1.7;margin:20px 0 36px;">Transformamos el acceso a la salud pública y privada de más de 4 millones de personas a través de nuestra plataforma de telemedicina white-label.</p>
+        <div style="display:flex;gap:16px;flex-wrap:wrap;">
+          <a href="contacto.html" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:600;font-size:1rem;border-radius:8px;padding:14px 32px;border:2px solid #25CB6B;background:#25CB6B;color:#FFFFFF;cursor:pointer;">Solicitá una demo</a>
+          <a href="casos-de-exito.html" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:600;font-size:1rem;border-radius:8px;padding:14px 32px;border:2px solid #183D52;background:transparent;color:#183D52;cursor:pointer;">Ver casos de éxito</a>
+        </div>
+        <div style="display:flex;gap:32px;margin-top:36px;padding-top:24px;border-top:1px solid #F0F0EE;">
+          <div style="text-align:center;">
+            <span style="font-size:1.5rem;font-weight:800;color:#183D52;">3 <small style="font-size:0.875rem;font-weight:600;color:#25CB6B;">min</small></span>
+            <span style="display:block;font-size:0.75rem;color:#8A8984;text-transform:uppercase;letter-spacing:0.05em;margin-top:2px;">espera promedio</span>
+          </div>
+          <div style="text-align:center;">
+            <span style="font-size:1.5rem;font-weight:800;color:#183D52;">92<small style="font-size:0.875rem;font-weight:600;color:#25CB6B;">%</small></span>
+            <span style="display:block;font-size:0.75rem;color:#8A8984;text-transform:uppercase;letter-spacing:0.05em;margin-top:2px;">satisfacción</span>
+          </div>
+          <div style="text-align:center;">
+            <span style="font-size:1.5rem;font-weight:800;color:#183D52;">4<small style="font-size:0.875rem;font-weight:600;color:#25CB6B;">M+</small></span>
+            <span style="display:block;font-size:0.75rem;color:#8A8984;text-transform:uppercase;letter-spacing:0.05em;margin-top:2px;">pacientes</span>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:center;align-items:center;position:relative;">
+        <div style="width:280px;height:560px;background:#183D52;border-radius:40px;padding:12px;position:relative;box-shadow:0 20px 60px rgba(0,0,0,0.12);z-index:2;">
+          <div style="width:120px;height:24px;background:#183D52;border-radius:0 0 16px 16px;margin:-12px auto 0;"></div>
+          <div style="width:100%;height:calc(100% - 20px);background:#FFFFFF;border-radius:28px;display:flex;align-items:center;justify-content:center;padding:20px;">
+            <div style="text-align:center;">
+              <div style="width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#25CB6B,#1fb85e);margin:0 auto 12px;position:relative;"></div>
+              <div style="font-weight:600;font-size:0.9375rem;color:#183D52;">Dra. Laura Méndez</div>
+              <div style="font-size:0.8125rem;color:#25CB6B;margin-top:4px;">● En consulta</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== SOCIAL PROOF ========== -->
+  <div style="padding:60px 0;background:#F6F5F0;overflow:hidden;">
+    <div style="width:100%;max-width:1200px;margin:0 auto;padding:0 24px;">
+      <p style="text-align:center;font-size:0.9375rem;font-weight:600;color:#8A8984;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:36px;">Más de 40 organizaciones confían en nosotros</p>
+      <div style="overflow:hidden;width:100%;background:#1A1A18;padding:20px 0;">
+        <div style="display:flex;gap:48px;width:max-content;">
+          <span style="font-weight:800;font-size:1.125rem;color:#FFFFFF;white-space:nowrap;flex-shrink:0;">OBSBA</span>
+          <span style="font-weight:800;font-size:1.125rem;color:#FFFFFF;white-space:nowrap;flex-shrink:0;">Unión Personal</span>
+          <span style="font-weight:800;font-size:1.125rem;color:#FFFFFF;white-space:nowrap;flex-shrink:0;">OSEP</span>
+          <span style="font-weight:800;font-size:1.125rem;color:#FFFFFF;white-space:nowrap;flex-shrink:0;">OSEF</span>
+          <span style="font-weight:800;font-size:1.125rem;color:#FFFFFF;white-space:nowrap;flex-shrink:0;">IOSPER</span>
+          <span style="font-weight:800;font-size:1.125rem;color:#FFFFFF;white-space:nowrap;flex-shrink:0;">OSPERYH</span>
+          <span style="font-weight:800;font-size:1.125rem;color:#FFFFFF;white-space:nowrap;flex-shrink:0;">Alte. Brown</span>
+          <span style="font-weight:800;font-size:1.125rem;color:#FFFFFF;white-space:nowrap;flex-shrink:0;">San Vicente</span>
+          <span style="font-weight:800;font-size:1.125rem;color:#FFFFFF;white-space:nowrap;flex-shrink:0;">Tres de Febrero</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== ABOUT ========== -->
+  <div style="padding:80px 0;background:#FFFFFF;border-top:1px solid #F0F0EE;">
+    <div style="width:100%;max-width:1200px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;">
+      <div>
+        <div style="display:inline-block;font-size:0.8125rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:#25CB6B;margin-bottom:12px;">Quiénes somos</div>
+        <h2 style="font-weight:800;line-height:1.15;color:#183D52;font-size:44px;letter-spacing:-0.015em;margin-bottom:48px;max-width:640px;margin-bottom:16px;">Transformamos el acceso a la salud pública y privada</h2>
+        <p style="color:#6B6A65;font-size:1.0625rem;margin-bottom:16px;">Somos una empresa argentina de salud digital que moderniza el acceso al sistema de salud público y privado. A través de nuestra plataforma de telemedicina white-label, más de 40 organizaciones brindan atención médica de calidad a sus comunidades.</p>
+        <a href="nosotros.html" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:600;font-size:0.9375rem;border-radius:8px;padding:12px 24px;border:2px solid #183D52;background:transparent;color:#183D52;margin-top:24px;">Conocenos</a>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div style="background:#F6F5F0;border-radius:20px;padding:24px;text-align:center;">
+          <span style="display:block;font-size:2rem;font-weight:800;color:#183D52;line-height:1;">4.8/5</span>
+          <span style="display:block;font-size:0.8125rem;color:#6B6A65;margin-top:6px;">Valoración de pacientes</span>
+        </div>
+        <div style="background:#F6F5F0;border-radius:20px;padding:24px;text-align:center;">
+          <span style="display:block;font-size:2rem;font-weight:800;color:#183D52;line-height:1;">25+</span>
+          <span style="display:block;font-size:0.8125rem;color:#6B6A65;margin-top:6px;">Municipios activos</span>
+        </div>
+        <div style="background:#F6F5F0;border-radius:20px;padding:24px;text-align:center;">
+          <span style="display:block;font-size:2rem;font-weight:800;color:#183D52;line-height:1;">10+</span>
+          <span style="display:block;font-size:0.8125rem;color:#6B6A65;margin-top:6px;">Obras sociales asociadas</span>
+        </div>
+        <div style="background:#F6F5F0;border-radius:20px;padding:24px;text-align:center;">
+          <span style="display:block;font-size:2rem;font-weight:800;color:#183D52;line-height:1;">+40</span>
+          <span style="display:block;font-size:0.8125rem;color:#6B6A65;margin-top:6px;">Organizaciones confían</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== DIFFERENTIALS ========== -->
+  <div style="padding:80px 0;background:#F6F5F0;">
+    <div style="width:100%;max-width:1200px;margin:0 auto;padding:0 24px;">
+      <div style="display:inline-block;font-size:0.8125rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:#25CB6B;margin-bottom:12px;">Nuestros diferenciales</div>
+      <h2 style="font-weight:800;line-height:1.15;color:#183D52;font-size:44px;letter-spacing:-0.015em;margin-bottom:48px;max-width:640px;">Por qué elegir Doctor Virtual</h2>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;">
+        <div style="background:#FFFFFF;border:1px solid #F0F0EE;border-radius:20px;padding:32px;text-align:center;">
+          <div style="width:64px;height:64px;background:rgba(37,203,107,0.08);border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect x="4" y="8" width="32" height="24" rx="3" stroke="#25CB6B" stroke-width="2"/><path d="M12 16h16M12 22h10" stroke="#25CB6B" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h3 style="font-weight:600;font-size:1.0625rem;line-height:1.15;color:#183D52;margin-bottom:8px;">Marca blanca</h3>
+          <p style="color:#6B6A65;font-size:0.9375rem;">La plataforma con el branding de cada cliente. Tu logo, tus colores, tu dominio.</p>
+        </div>
+        <div style="background:#FFFFFF;border:1px solid #F0F0EE;border-radius:20px;padding:32px;text-align:center;">
+          <div style="width:64px;height:64px;background:rgba(37,203,107,0.08);border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="16" r="8" stroke="#25CB6B" stroke-width="2"/><path d="M12 32c0-4.4 3.6-8 8-8s8 3.6 8 8" stroke="#25CB6B" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h3 style="font-weight:600;font-size:1.0625rem;line-height:1.15;color:#183D52;margin-bottom:8px;">Múltiples especialidades</h3>
+          <p style="color:#6B6A65;font-size:0.9375rem;">Más de 12 especialidades médicas disponibles 24/7 vía videollamada.</p>
+        </div>
+        <div style="background:#FFFFFF;border:1px solid #F0F0EE;border-radius:20px;padding:32px;text-align:center;">
+          <div style="width:64px;height:64px;background:rgba(37,203,107,0.08);border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><path d="M8 20l8-8 6 6L34 8" stroke="#25CB6B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M28 8h6v6" stroke="#25CB6B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 style="font-weight:600;font-size:1.0625rem;line-height:1.15;color:#183D52;margin-bottom:8px;">Habilitación Ministerio de Salud</h3>
+          <p style="color:#6B6A65;font-size:0.9375rem;">Plataforma que cumple con los marcos regulatorios vigentes en Argentina.</p>
+        </div>
+        <div style="background:#FFFFFF;border:1px solid #F0F0EE;border-radius:20px;padding:32px;text-align:center;">
+          <div style="width:64px;height:64px;background:rgba(37,203,107,0.08);border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect x="4" y="6" width="12" height="12" rx="2" stroke="#25CB6B" stroke-width="2"/><rect x="24" y="6" width="12" height="12" rx="2" stroke="#25CB6B" stroke-width="2"/><rect x="4" y="22" width="12" height="12" rx="2" stroke="#25CB6B" stroke-width="2"/><rect x="24" y="22" width="12" height="12" rx="2" stroke="#25CB6B" stroke-width="2"/></svg>
+          </div>
+          <h3 style="font-weight:600;font-size:1.0625rem;line-height:1.15;color:#183D52;margin-bottom:8px;">Integración e interoperabilidad</h3>
+          <p style="color:#6B6A65;font-size:0.9375rem;">Nos integramos con tus sistemas existentes: padrones, HC, ERPs y turnos.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== WHITE LABEL ========== -->
+  <div style="padding:80px 0;background:#FFFFFF;">
+    <div style="width:100%;max-width:1200px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;">
+      <div>
+        <div style="display:inline-block;font-size:0.8125rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:#25CB6B;margin-bottom:12px;">Marca blanca</div>
+        <h2 style="font-weight:800;line-height:1.15;color:#183D52;font-size:44px;letter-spacing:-0.015em;margin-bottom:48px;max-width:640px;">Tu plataforma, tu identidad. Nosotros ponemos la tecnología.</h2>
+        <p style="color:#6B6A65;font-size:1.0625rem;margin-bottom:16px;">Personalizá cada detalle de la experiencia de telemedicina con los colores, logo y naming de tu organización. Implementación en semanas, no meses.</p>
+        <ul style="margin-top:24px;display:flex;flex-direction:column;gap:12px;">
+          <li style="display:flex;align-items:center;gap:10px;font-size:0.9375rem;color:#6B6A65;"><span style="width:8px;height:8px;background:#25CB6B;border-radius:50%;flex-shrink:0;"></span>Branding 100% personalizable</li>
+          <li style="display:flex;align-items:center;gap:10px;font-size:0.9375rem;color:#6B6A65;"><span style="width:8px;height:8px;background:#25CB6B;border-radius:50%;flex-shrink:0;"></span>App white-label para iOS y Android</li>
+          <li style="display:flex;align-items:center;gap:10px;font-size:0.9375rem;color:#6B6A65;"><span style="width:8px;height:8px;background:#25CB6B;border-radius:50%;flex-shrink:0;"></span>Panel de administración propio</li>
+          <li style="display:flex;align-items:center;gap:10px;font-size:0.9375rem;color:#6B6A65;"><span style="width:8px;height:8px;background:#25CB6B;border-radius:50%;flex-shrink:0;"></span>Soporte y actualizaciones incluidas</li>
+        </ul>
+      </div>
+      <div style="display:flex;justify-content:center;gap:16px;flex-wrap:wrap;">
+        <div style="width:140px;height:220px;background:#F6F5F0;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;border:2px dashed #E0DFDA;">
+          <span style="font-weight:600;font-size:0.75rem;color:#183D52;text-align:center;">Municipio</span>
+          <span style="width:10px;height:10px;border-radius:50%;background:#2563eb;"></span>
+        </div>
+        <div style="width:140px;height:220px;background:#F6F5F0;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;border:2px dashed #E0DFDA;">
+          <span style="font-weight:600;font-size:0.75rem;color:#183D52;text-align:center;">Obra Social</span>
+          <span style="width:10px;height:10px;border-radius:50%;background:#e11d48;"></span>
+        </div>
+        <div style="width:140px;height:220px;background:#F6F5F0;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;border:2px dashed #E0DFDA;">
+          <span style="font-weight:600;font-size:0.75rem;color:#183D52;text-align:center;">Prepagas</span>
+          <span style="width:10px;height:10px;border-radius:50%;background:#f59e0b;"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== SOLUTIONS ========== -->
+  <div style="padding:80px 0;background:#F6F5F0;">
+    <div style="width:100%;max-width:1200px;margin:0 auto;padding:0 24px;">
+      <div style="display:inline-block;font-size:0.8125rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:#25CB6B;margin-bottom:12px;">Soluciones</div>
+      <h2 style="font-weight:800;line-height:1.15;color:#183D52;font-size:44px;letter-spacing:-0.015em;margin-bottom:48px;max-width:640px;">Todo lo que necesitás para tu salud digital</h2>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;">
+        <div style="background:#FFFFFF;border:1px solid #F0F0EE;border-radius:20px;padding:32px;text-align:center;">
+          <div style="width:72px;height:72px;background:rgba(37,203,107,0.08);border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><rect x="8" y="12" width="32" height="24" rx="4" stroke="#25CB6B" stroke-width="2"/><circle cx="24" cy="24" r="6" stroke="#25CB6B" stroke-width="2"/><path d="M16 20v8M32 20v8" stroke="#25CB6B" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h3 style="font-weight:600;font-size:1.25rem;line-height:1.15;color:#183D52;margin-bottom:8px;">Telemedicina 24/7</h3>
+          <p style="color:#6B6A65;font-size:0.9375rem;">Consultas por videollamada con múltiples especialidades, recetas y certificados digitales.</p>
+          <a href="soluciones.html" style="display:inline-block;margin-top:12px;font-size:0.875rem;font-weight:600;color:#25CB6B;">Ver más &rarr;</a>
+        </div>
+        <div style="background:#FFFFFF;border:1px solid #F0F0EE;border-radius:20px;padding:32px;text-align:center;">
+          <div style="width:72px;height:72px;background:rgba(37,203,107,0.08);border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><rect x="8" y="10" width="32" height="28" rx="4" stroke="#25CB6B" stroke-width="2"/><path d="M16 18h16M16 24h12M16 30h8" stroke="#25CB6B" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h3 style="font-weight:600;font-size:1.25rem;line-height:1.15;color:#183D52;margin-bottom:8px;">Sala de espera virtual</h3>
+          <p style="color:#6B6A65;font-size:0.9375rem;">Contenido audiovisual educativo mientras el paciente espera su atención. Sin espera presencial.</p>
+          <a href="soluciones.html" style="display:inline-block;margin-top:12px;font-size:0.875rem;font-weight:600;color:#25CB6B;">Ver más &rarr;</a>
+        </div>
+        <div style="background:#FFFFFF;border:1px solid #F0F0EE;border-radius:20px;padding:32px;text-align:center;">
+          <div style="width:72px;height:72px;background:rgba(37,203,107,0.08);border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><path d="M24 6c-4 0-8 6-8 12s4 8 8 8 8-2 8-8-4-12-8-12z" stroke="#25CB6B" stroke-width="2"/><path d="M14 34c0-5 4.5-8 10-8s10 3 10 8" stroke="#25CB6B" stroke-width="2" stroke-linecap="round"/><circle cx="24" cy="14" r="2" fill="#25CB6B"/></svg>
+          </div>
+          <h3 style="font-weight:600;font-size:1.25rem;line-height:1.15;color:#183D52;margin-bottom:8px;">Programa de Salud Mental</h3>
+          <p style="color:#6B6A65;font-size:0.9375rem;">Primera escucha psicológica 24/7 con derivación asistida cuando se requiere.</p>
+          <a href="soluciones.html" style="display:inline-block;margin-top:12px;font-size:0.875rem;font-weight:600;color:#25CB6B;">Ver más &rarr;</a>
+        </div>
+        <div style="background:#FFFFFF;border:1px solid #F0F0EE;border-radius:20px;padding:32px;text-align:center;">
+          <div style="width:72px;height:72px;background:rgba(37,203,107,0.08);border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><rect x="6" y="12" width="36" height="24" rx="4" stroke="#25CB6B" stroke-width="2"/><rect x="10" y="16" width="28" height="16" rx="2" fill="#25CB6B" fill-opacity="0.1"/><path d="M18 24h12M24 20v8" stroke="#25CB6B" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h3 style="font-weight:600;font-size:1.25rem;line-height:1.15;color:#183D52;margin-bottom:8px;">Consultorios Virtuales (Tótems)</h3>
+          <p style="color:#6B6A65;font-size:0.9375rem;">Unidades físicas de atención médica virtual instaladas en espacios públicos.</p>
+          <a href="soluciones.html" style="display:inline-block;margin-top:12px;font-size:0.875rem;font-weight:600;color:#25CB6B;">Ver más &rarr;</a>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:40px;">
+        <a href="soluciones.html" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:600;font-size:0.9375rem;border-radius:8px;padding:12px 24px;border:2px solid #183D52;background:transparent;color:#183D52;">Ver todas las soluciones</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== SPECIALTIES ========== -->
+  <div style="padding:80px 0;background:#FFFFFF;">
+    <div style="width:100%;max-width:1200px;margin:0 auto;padding:0 24px;">
+      <div style="display:inline-block;font-size:0.8125rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:#25CB6B;margin-bottom:12px;">Especialidades médicas</div>
+      <h2 style="font-weight:800;line-height:1.15;color:#183D52;font-size:44px;letter-spacing:-0.015em;margin-bottom:48px;max-width:640px;">Más de 12 especialidades disponibles 24/7</h2>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;">
+        <div style="display:flex;align-items:center;gap:10px;padding:14px 16px;background:#F6F5F0;border-radius:8px;font-size:0.9375rem;font-weight:600;color:#183D52;">
+          <span style="width:28px;height:28px;background:rgba(37,203,107,0.08);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 4v16M4 12h16" stroke="#25CB6B" stroke-width="2" stroke-linecap="round"/></svg>
+          </span>
+          Clínica médica
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;padding:14px 16px;background:#F6F5F0;border-radius:8px;font-size:0.9375rem;font-weight:600;color:#183D52;">
+          <span style="width:28px;height:28px;background:rgba(37,203,107,0.08);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 4v16M4 12h16" stroke="#25CB6B" stroke-width="2" stroke-linecap="round"/></svg>
+          </span>
+          Pediatría
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;padding:14px 16px;background:#F6F5F0;border-radius:8px;font-size:0.9375rem;font-weight:600;color:#183D52;">
+          <span style="width:28px;height:28px;background:rgba(37,203,107,0.08);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 4v16M4 12h16" stroke="#25CB6B" stroke-width="2" stroke-linecap="round"/></svg>
+          </span>
+          Ginecología
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;padding:14px 16px;background:#F6F5F0;border-radius:8px;font-size:0.9375rem;font-weight:600;color:#183D52;">
+          <span style="width:28px;height:28px;background:rgba(37,203,107,0.08);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 4v16M4 12h16" stroke="#25CB6B" stroke-width="2" stroke-linecap="round"/></svg>
+          </span>
+          Dermatología
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;padding:14px 16px;background:#F6F5F0;border-radius:8px;font-size:0.9375rem;font-weight:600;color:#183D52;">
+          <span style="width:28px;height:28px;background:rgba(37,203,107,0.08);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 4v16M4 12h16" stroke="#25CB6B" stroke-width="2" stroke-linecap="round"/></svg>
+          </span>
+          Salud mental
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;padding:14px 16px;background:#F6F5F0;border-radius:8px;font-size:0.9375rem;font-weight:600;color:#183D52;">
+          <span style="width:28px;height:28px;background:rgba(37,203,107,0.08);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 4v16M4 12h16" stroke="#25CB6B" stroke-width="2" stroke-linecap="round"/></svg>
+          </span>
+          Nutrición
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;padding:14px 16px;background:#F6F5F0;border-radius:8px;font-size:0.9375rem;font-weight:600;color:#183D52;">
+          <span style="width:28px;height:28px;background:rgba(37,203,107,0.08);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 4v16M4 12h16" stroke="#25CB6B" stroke-width="2" stroke-linecap="round"/></svg>
+          </span>
+          Cardiología
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;padding:14px 16px;background:#F6F5F0;border-radius:8px;font-size:0.9375rem;font-weight:600;color:#183D52;">
+          <span style="width:28px;height:28px;background:rgba(37,203,107,0.08);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 4v16M4 12h16" stroke="#25CB6B" stroke-width="2" stroke-linecap="round"/></svg>
+          </span>
+          Traumatología
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;padding:14px 16px;background:#F6F5F0;border-radius:8px;font-size:0.9375rem;font-weight:600;color:#183D52;">
+          <span style="width:28px;height:28px;background:rgba(37,203,107,0.08);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 4v16M4 12h16" stroke="#25CB6B" stroke-width="2" stroke-linecap="round"/></svg>
+          </span>
+          Oftalmología
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;padding:14px 16px;background:#F6F5F0;border-radius:8px;font-size:0.9375rem;font-weight:600;color:#183D52;">
+          <span style="width:28px;height:28px;background:rgba(37,203,107,0.08);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 4v16M4 12h16" stroke="#25CB6B" stroke-width="2" stroke-linecap="round"/></svg>
+          </span>
+          Neurología
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;padding:14px 16px;background:#F6F5F0;border-radius:8px;font-size:0.9375rem;font-weight:600;color:#183D52;">
+          <span style="width:28px;height:28px;background:rgba(37,203,107,0.08);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 4v16M4 12h16" stroke="#25CB6B" stroke-width="2" stroke-linecap="round"/></svg>
+          </span>
+          Endocrinología
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;padding:14px 16px;background:#F6F5F0;border-radius:8px;font-size:0.9375rem;font-weight:600;color:#183D52;">
+          <span style="width:28px;height:28px;background:rgba(37,203,107,0.08);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 4v16M4 12h16" stroke="#25CB6B" stroke-width="2" stroke-linecap="round"/></svg>
+          </span>
+          Neumonología
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== SECTORS ========== -->
+  <div style="padding:80px 0;background:#FFFFFF;">
+    <div style="width:100%;max-width:1200px;margin:0 auto;padding:0 24px;">
+      <div style="display:inline-block;font-size:0.8125rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:#25CB6B;margin-bottom:12px;">Sectores</div>
+      <h2 style="font-weight:800;line-height:1.15;color:#183D52;font-size:44px;letter-spacing:-0.015em;margin-bottom:48px;max-width:640px;">Soluciones adaptadas a cada organización</h2>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;">
+        <a href="municipios.html" style="display:flex;flex-direction:column;background:#FFFFFF;border:1px solid #F0F0EE;border-radius:20px;padding:32px;cursor:pointer;text-decoration:none;color:inherit;">
+          <div style="width:64px;height:64px;background:rgba(37,203,107,0.08);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect x="4" y="8" width="32" height="24" rx="3" stroke="#25CB6B" stroke-width="2"/><path d="M12 16l4 4 6-6" stroke="#25CB6B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 style="font-weight:600;font-size:1.25rem;line-height:1.15;color:#183D52;margin-bottom:8px;">Municipios</h3>
+          <p style="color:#6B6A65;font-size:0.9375rem;margin-bottom:auto;">Salud digital para tu comunidad. Implementación en centros de atención primaria.</p>
+          <span style="display:inline-block;margin-top:16px;font-size:1.25rem;color:#25CB6B;">&rarr;</span>
+        </a>
+        <a href="obras-sociales.html" style="display:flex;flex-direction:column;background:#FFFFFF;border:1px solid #F0F0EE;border-radius:20px;padding:32px;cursor:pointer;text-decoration:none;color:inherit;">
+          <div style="width:64px;height:64px;background:rgba(37,203,107,0.08);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><path d="M8 6h24v28H8z" stroke="#25CB6B" stroke-width="2"/><path d="M16 6v28M24 6v28" stroke="#25CB6B" stroke-width="2"/></svg>
+          </div>
+          <h3 style="font-weight:600;font-size:1.25rem;line-height:1.15;color:#183D52;margin-bottom:8px;">Obras sociales y prepagas</h3>
+          <p style="color:#6B6A65;font-size:0.9375rem;margin-bottom:auto;">Optimizá prestaciones con resolución del 85% de casos en videollamada.</p>
+          <span style="display:inline-block;margin-top:16px;font-size:1.25rem;color:#25CB6B;">&rarr;</span>
+        </a>
+        <a href="aseguradoras.html" style="display:flex;flex-direction:column;background:#FFFFFF;border:1px solid #F0F0EE;border-radius:20px;padding:32px;cursor:pointer;text-decoration:none;color:inherit;">
+          <div style="width:64px;height:64px;background:rgba(37,203,107,0.08);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><path d="M6 14l14-8 14 8v12l-14 8-14-8V14z" stroke="#25CB6B" stroke-width="2"/><path d="M14 18l6 4 8-6" stroke="#25CB6B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 style="font-weight:600;font-size:1.25rem;line-height:1.15;color:#183D52;margin-bottom:8px;">Aseguradoras</h3>
+          <p style="color:#6B6A65;font-size:0.9375rem;margin-bottom:auto;">Un beneficio diferencial de telemedicina para mejorar fidelización.</p>
+          <span style="display:inline-block;margin-top:16px;font-size:1.25rem;color:#25CB6B;">&rarr;</span>
+        </a>
+        <a href="empresas.html" style="display:flex;flex-direction:column;background:#FFFFFF;border:1px solid #F0F0EE;border-radius:20px;padding:32px;cursor:pointer;text-decoration:none;color:inherit;">
+          <div style="width:64px;height:64px;background:rgba(37,203,107,0.08);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect x="6" y="8" width="28" height="24" rx="3" stroke="#25CB6B" stroke-width="2"/><circle cx="20" cy="18" r="4" stroke="#25CB6B" stroke-width="2"/><path d="M14 28c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="#25CB6B" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h3 style="font-weight:600;font-size:1.25rem;line-height:1.15;color:#183D52;margin-bottom:8px;">Empresas (Medicina Laboral)</h3>
+          <p style="color:#6B6A65;font-size:0.9375rem;margin-bottom:auto;">Cuidamos la salud de tus colaboradores con telemedicina laboral.</p>
+          <span style="display:inline-block;margin-top:16px;font-size:1.25rem;color:#25CB6B;">&rarr;</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== CASES ========== -->
+  <div style="padding:80px 0;background:#F6F5F0;">
+    <div style="width:100%;max-width:1200px;margin:0 auto;padding:0 24px;">
+      <div style="display:inline-block;font-size:0.8125rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:#25CB6B;margin-bottom:12px;">Casos de éxito</div>
+      <h2 style="font-weight:800;line-height:1.15;color:#183D52;font-size:44px;letter-spacing:-0.015em;margin-bottom:48px;max-width:640px;">Resultados que hablan por sí solos</h2>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;">
+        <div style="background:#FFFFFF;border:1px solid #F0F0EE;border-radius:20px;padding:32px;display:flex;flex-direction:column;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+            <span style="font-weight:800;font-size:1.0625rem;color:#183D52;">OBSBA</span>
+            <span style="font-size:0.75rem;font-weight:600;color:#25CB6B;background:rgba(37,203,107,0.08);padding:4px 10px;border-radius:100px;">Municipio</span>
+          </div>
+          <blockquote style="font-style:italic;font-weight:300;font-size:0.9375rem;color:#6B6A65;line-height:1.7;margin-bottom:20px;flex:1;">"La implementación de Doctor Virtual nos permitió multiplicar nuestra capacidad de atención y mejorar significativamente la experiencia de nuestros afiliados."</blockquote>
+          <div style="border-top:1px solid #F0F0EE;padding-top:16px;">
+            <span style="font-size:1.75rem;font-weight:800;color:#25CB6B;">+120K</span>
+            <span style="display:block;font-size:0.8125rem;color:#6B6A65;margin-top:2px;">consultas virtuales al año</span>
+          </div>
+        </div>
+        <div style="background:#FFFFFF;border:1px solid #F0F0EE;border-radius:20px;padding:32px;display:flex;flex-direction:column;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+            <span style="font-weight:800;font-size:1.0625rem;color:#183D52;">Unión Personal</span>
+            <span style="font-size:0.75rem;font-weight:600;color:#25CB6B;background:rgba(37,203,107,0.08);padding:4px 10px;border-radius:100px;">Obra Social</span>
+          </div>
+          <blockquote style="font-style:italic;font-weight:300;font-size:0.9375rem;color:#6B6A65;line-height:1.7;margin-bottom:20px;flex:1;">"Logramos que el 92% de los afiliados valore el servicio como excelente. El tiempo de espera pasó de 3 horas a 3 minutos."</blockquote>
+          <div style="border-top:1px solid #F0F0EE;padding-top:16px;">
+            <span style="font-size:1.75rem;font-weight:800;color:#25CB6B;">98%</span>
+            <span style="display:block;font-size:0.8125rem;color:#6B6A65;margin-top:2px;">de adherencia al programa</span>
+          </div>
+        </div>
+        <div style="background:#FFFFFF;border:1px solid #F0F0EE;border-radius:20px;padding:32px;display:flex;flex-direction:column;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+            <span style="font-weight:800;font-size:1.0625rem;color:#183D52;">OSEP</span>
+            <span style="font-size:0.75rem;font-weight:600;color:#25CB6B;background:rgba(37,203,107,0.08);padding:4px 10px;border-radius:100px;">Provincia</span>
+          </div>
+          <blockquote style="font-style:italic;font-weight:300;font-size:0.9375rem;color:#6B6A65;line-height:1.7;margin-bottom:20px;flex:1;">"Implementamos telemedicina en 40 centros de atención primaria en 3 meses. Hoy es el canal de consulta más usado."</blockquote>
+          <div style="border-top:1px solid #F0F0EE;padding-top:16px;">
+            <span style="font-size:1.75rem;font-weight:800;color:#25CB6B;">40</span>
+            <span style="display:block;font-size:0.8125rem;color:#6B6A65;margin-top:2px;">centros conectados</span>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:40px;">
+        <a href="casos-de-exito.html" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:600;font-size:0.9375rem;border-radius:8px;padding:12px 24px;border:2px solid #183D52;background:transparent;color:#183D52;">Ver todos los casos</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== CTA FINAL ========== -->
+  <div style="padding:80px 0;background:#25CB6B;">
+    <div style="width:100%;max-width:1200px;margin:0 auto;padding:0 24px;">
+      <div style="background:#FFFFFF;border-radius:24px;padding:56px 48px;text-align:center;max-width:720px;margin:0 auto;">
+        <h2 style="font-weight:800;line-height:1.15;color:#183D52;font-size:32px;margin-bottom:12px;">¿Querés implementar Doctor Virtual en tu organización?</h2>
+        <p style="color:#6B6A65;font-size:1.0625rem;margin-bottom:32px;">Completá el formulario y un ejecutivo comercial te contactará en 24 hs.</p>
+        <form style="display:flex;flex-direction:column;gap:16px;">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+            <input type="text" placeholder="Nombre completo" style="width:100%;padding:14px 16px;border:2px solid #E0DFDA;border-radius:8px;font-family:inherit;font-size:0.9375rem;color:#1A1A18;background:#FFFFFF;outline:none;" />
+            <input type="text" placeholder="Empresa / Organización" style="width:100%;padding:14px 16px;border:2px solid #E0DFDA;border-radius:8px;font-family:inherit;font-size:0.9375rem;color:#1A1A18;background:#FFFFFF;outline:none;" />
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+            <input type="email" placeholder="Email corporativo" style="width:100%;padding:14px 16px;border:2px solid #E0DFDA;border-radius:8px;font-family:inherit;font-size:0.9375rem;color:#1A1A18;background:#FFFFFF;outline:none;" />
+            <input type="tel" placeholder="Teléfono" style="width:100%;padding:14px 16px;border:2px solid #E0DFDA;border-radius:8px;font-family:inherit;font-size:0.9375rem;color:#1A1A18;background:#FFFFFF;outline:none;" />
+          </div>
+          <button type="submit" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:600;font-size:1rem;border-radius:8px;padding:14px 32px;border:2px solid #25CB6B;background:#25CB6B;color:#FFFFFF;cursor:pointer;width:100%;font-family:inherit;">Enviar solicitud</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== FOOTER ========== -->
+  <div style="background:#183D52;color:#FFFFFF;padding:64px 0 32px;">
+    <div style="width:100%;max-width:1200px;margin:0 auto;padding:0 24px;">
+      <div style="display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,0.1);margin-bottom:32px;">
+        <div>
+          <a href="index.html" style="display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.25rem;color:#FFFFFF;">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="10" fill="#25CB6B"/><path d="M12 18h12M18 12v12" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/></svg>
+            <span style="color:#FFFFFF;">Doctor Virtual</span>
+          </a>
+          <p style="color:rgba(255,255,255,0.65);font-size:0.875rem;margin-top:16px;max-width:320px;">Transformamos el acceso a la salud pública y privada a través de nuestra plataforma de telemedicina white-label.</p>
+          <div style="display:flex;gap:12px;margin-top:20px;">
+            <a href="#" style="color:rgba(255,255,255,0.5);">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.5"/><circle cx="17" cy="7" r="1" fill="currentColor"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.5"/></svg>
+            </a>
+            <a href="#" style="color:rgba(255,255,255,0.5);">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="4" stroke="currentColor" stroke-width="1.5"/><path d="M8 11v5M8 8v.01M12 16v-4M16 16v-2.5a2.5 2.5 0 0 0-5 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </a>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <h4 style="color:#FFFFFF;margin-bottom:16px;font-weight:600;font-size:0.9375rem;">Navegación</h4>
+          <a href="index.html" style="color:rgba(255,255,255,0.65);font-size:0.875rem;">Inicio</a>
+          <a href="soluciones.html" style="color:rgba(255,255,255,0.65);font-size:0.875rem;">Soluciones</a>
+          <a href="casos-de-exito.html" style="color:rgba(255,255,255,0.65);font-size:0.875rem;">Casos de éxito</a>
+          <a href="nosotros.html" style="color:rgba(255,255,255,0.65);font-size:0.875rem;">Nosotros</a>
+          <a href="contacto.html" style="color:rgba(255,255,255,0.65);font-size:0.875rem;">Contacto</a>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <h4 style="color:#FFFFFF;margin-bottom:16px;font-weight:600;font-size:0.9375rem;">Sectores</h4>
+          <a href="municipios.html" style="color:rgba(255,255,255,0.65);font-size:0.875rem;">Municipios</a>
+          <a href="obras-sociales.html" style="color:rgba(255,255,255,0.65);font-size:0.875rem;">Obras Sociales</a>
+          <a href="aseguradoras.html" style="color:rgba(255,255,255,0.65);font-size:0.875rem;">Aseguradoras</a>
+          <a href="empresas.html" style="color:rgba(255,255,255,0.65);font-size:0.875rem;">Empresas</a>
+        </div>
+        <div>
+          <h4 style="color:#FFFFFF;margin-bottom:16px;font-weight:600;font-size:0.9375rem;">Contacto</h4>
+          <p style="color:rgba(255,255,255,0.65);font-size:0.875rem;margin-bottom:8px;">Av. Córdoba 991, 1° piso<br/>CABA, Argentina</p>
+          <a href="mailto:contacto@doctorvirtual.ai" style="color:rgba(255,255,255,0.65);font-size:0.875rem;">contacto@doctorvirtual.ai</a>
+        </div>
+      </div>
+      <div style="text-align:center;">
+        <p style="font-size:0.8125rem;color:rgba(255,255,255,0.4);">&copy; 2026 Doctor Virtual S.A. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
