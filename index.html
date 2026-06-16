@@ -148,6 +148,11 @@ p {
   color: var(--white);
   transform: translateY(-1px);
 }
+.about-content .btn-outline:hover {
+  background: var(--green);
+  border-color: var(--green);
+  color: var(--white);
+}
 
 .btn-lg { padding: 14px 32px; font-size: 1rem; }
 .btn-block { width: 100%; }
@@ -359,6 +364,15 @@ p {
 
 .mockup-name { font-weight: 600; font-size: 0.9375rem; color: var(--blue); }
 .mockup-status { font-size: 0.8125rem; color: var(--green); margin-top: 4px; }
+
+.hero-image {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg);
+  position: relative;
+  z-index: 2;
+  box-shadow: var(--shadow-xl);
+}
 
 .hero-shape {
   position: absolute;
@@ -583,37 +597,17 @@ p {
 
 .wl-mockups {
   display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
   justify-content: center;
-}
-
-.wl-mockup {
-  width: 140px;
-  height: 220px;
-  background: var(--cream);
-  border-radius: var(--radius-md);
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 8px;
-  border: 2px dashed var(--gray-200);
-  transition: all 0.3s;
-}
-.wl-mockup:hover { border-color: var(--green); background: var(--green-light); }
-
-.wl-brand { font-weight: 600; font-size: 0.75rem; color: var(--blue); text-align: center; }
-.wl-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: var(--green);
 }
 
-.wl-mockup-1 .wl-dot { background: #2563eb; }
-.wl-mockup-2 .wl-dot { background: #e11d48; }
-.wl-mockup-3 .wl-dot { background: #f59e0b; }
+.wl-phone-image {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+}
 
 .solutions {
   padding: 80px 0;
@@ -1495,6 +1489,7 @@ p {
       <ul class="nav-links" id="navLinks">
         <li><a href="soluciones.html" class="nav-link">Soluciones</a></li>
         <li><a href="sectores.html" class="nav-link">Sectores</a></li>
+        <li><a href="nuestros-clientes.html" class="nav-link">Clientes</a></li>
         <li><a href="casos-de-exito.html" class="nav-link">Casos de éxito</a></li>
         <li><a href="nosotros.html" class="nav-link">Nosotros</a></li>
         <li><a href="contacto.html" class="nav-link">Contacto</a></li>
@@ -1537,16 +1532,7 @@ p {
       </div>
       <div class="hero-visual fade-in">
         <div class="hero-mockup-wrapper">
-          <div class="mockup">
-            <div class="mockup-notch"></div>
-            <div class="mockup-screen">
-              <div class="mockup-call">
-                <div class="mockup-avatar"></div>
-                <div class="mockup-name">Dra. Laura Méndez</div>
-                <div class="mockup-status">● En consulta</div>
-              </div>
-            </div>
-          </div>
+          <img src="Fotos/teleconsulta sin marco.png" alt="Consulta de telemedicina" class="hero-image" />
           <div class="hero-shape"></div>
         </div>
       </div>
@@ -1779,18 +1765,7 @@ p {
         </div>
         <div class="wl-visual fade-in">
           <div class="wl-mockups">
-            <div class="wl-mockup wl-mockup-1">
-              <span class="wl-brand">Municipio</span>
-              <span class="wl-dot"></span>
-            </div>
-            <div class="wl-mockup wl-mockup-2">
-              <span class="wl-brand">Obra Social</span>
-              <span class="wl-dot"></span>
-            </div>
-            <div class="wl-mockup wl-mockup-3">
-              <span class="wl-brand">Prepagas</span>
-              <span class="wl-dot"></span>
-            </div>
+            <img src="Fotos/mockup telefono.png" alt="Mockup de teléfono Doctor Virtual" class="wl-phone-image" />
           </div>
         </div>
       </div>
@@ -2100,6 +2075,7 @@ p {
           <h4>Navegación</h4>
           <a href="index.html">Inicio</a>
           <a href="soluciones.html">Soluciones</a>
+          <a href="nuestros-clientes.html">Clientes</a>
           <a href="casos-de-exito.html">Casos de éxito</a>
           <a href="nosotros.html">Nosotros</a>
           <a href="contacto.html">Contacto</a>

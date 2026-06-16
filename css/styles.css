@@ -140,6 +140,11 @@ p {
   color: var(--white);
   transform: translateY(-1px);
 }
+.about-content .btn-outline:hover {
+  background: var(--green);
+  border-color: var(--green);
+  color: var(--white);
+}
 
 .btn-lg { padding: 14px 32px; font-size: 1rem; }
 .btn-block { width: 100%; }
@@ -451,6 +456,90 @@ p {
   flex-shrink: 0;
 }
 .client-logo:hover { opacity: 0.6; }
+
+/* ========== CLIENTES LOGOS ========== */
+.logos-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 24px;
+}
+
+.client-logo-card {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.client-logo-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.client-logo-card:nth-child(1) { transition-delay: 0.00s; }
+.client-logo-card:nth-child(2) { transition-delay: 0.03s; }
+.client-logo-card:nth-child(3) { transition-delay: 0.06s; }
+.client-logo-card:nth-child(4) { transition-delay: 0.09s; }
+.client-logo-card:nth-child(5) { transition-delay: 0.12s; }
+.client-logo-card:nth-child(6) { transition-delay: 0.15s; }
+.client-logo-card:nth-child(7) { transition-delay: 0.18s; }
+.client-logo-card:nth-child(8) { transition-delay: 0.21s; }
+.client-logo-card:nth-child(9) { transition-delay: 0.24s; }
+.client-logo-card:nth-child(10) { transition-delay: 0.27s; }
+.client-logo-card:nth-child(11) { transition-delay: 0.30s; }
+.client-logo-card:nth-child(12) { transition-delay: 0.33s; }
+.client-logo-card:nth-child(13) { transition-delay: 0.36s; }
+.client-logo-card:nth-child(14) { transition-delay: 0.39s; }
+.client-logo-card:nth-child(15) { transition-delay: 0.42s; }
+.client-logo-card:nth-child(16) { transition-delay: 0.45s; }
+.client-logo-card:nth-child(17) { transition-delay: 0.48s; }
+.client-logo-card:nth-child(18) { transition-delay: 0.51s; }
+.client-logo-card:nth-child(19) { transition-delay: 0.54s; }
+.client-logo-card:nth-child(20) { transition-delay: 0.57s; }
+.client-logo-card:nth-child(21) { transition-delay: 0.60s; }
+.client-logo-card:nth-child(22) { transition-delay: 0.63s; }
+.client-logo-card:nth-child(23) { transition-delay: 0.66s; }
+.client-logo-card:nth-child(24) { transition-delay: 0.69s; }
+.client-logo-card:nth-child(25) { transition-delay: 0.72s; }
+.client-logo-card:nth-child(26) { transition-delay: 0.75s; }
+.client-logo-card:nth-child(27) { transition-delay: 0.78s; }
+.client-logo-card:nth-child(28) { transition-delay: 0.81s; }
+.client-logo-card:nth-child(29) { transition-delay: 0.84s; }
+.client-logo-card:nth-child(30) { transition-delay: 0.87s; }
+.client-logo-card:nth-child(31) { transition-delay: 0.90s; }
+.client-logo-card:nth-child(32) { transition-delay: 0.93s; }
+.client-logo-card:nth-child(33) { transition-delay: 0.96s; }
+
+.logo-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+  padding: 16px;
+  background: var(--gray-50);
+  border: 1px solid var(--gray-100);
+  border-radius: var(--radius-md);
+  transition: all 0.3s ease;
+}
+
+.logo-inner:hover {
+  border-color: var(--green);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.logo-inner img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: grayscale(1);
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+.logo-inner:hover img {
+  filter: grayscale(0);
+  opacity: 1;
+}
 
 /* ========== METRICS ========== */
 .metrics {
@@ -1481,6 +1570,8 @@ p {
 
 /* ========== RESPONSIVE ========== */
 @media (max-width: 1024px) {
+  .logos-grid { grid-template-columns: repeat(4, 1fr); }
+
   .hero-grid { grid-template-columns: 1fr; text-align: center; }
   .hero-content { max-width: 100%; }
   .hero-ctas { justify-content: center; }
@@ -1521,6 +1612,9 @@ p {
 }
 
 @media (max-width: 768px) {
+  .logos-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .logo-inner { height: 80px; padding: 12px; }
+
   .nav-links { display: none; }
   .nav-cta { display: none; }
   .hamburger { display: flex; }
@@ -1674,4 +1768,6 @@ p {
   .container { padding: 0 16px; }
   .hero { padding-top: calc(var(--nav-height) + 40px); }
   .mockup { width: 220px; height: 440px; }
+  .logos-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .logo-inner { height: 70px; padding: 10px; }
 }
