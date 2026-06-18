@@ -7,7 +7,7 @@
   <meta name="description" content="Plataforma de telemedicina B2B para municipios, obras sociales, prepagas y aseguradoras. Marca blanca, múltiples especialidades, interoperabilidad HL7/FHIR." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;600;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;800&display=swap" rel="stylesheet" />
   <style>
 /* ========== RESET & BASE ========== */
 *, *::before, *::after {
@@ -40,7 +40,7 @@
   --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
   --shadow-lg: 0 12px 40px rgba(0,0,0,0.1);
   --shadow-xl: 0 20px 60px rgba(0,0,0,0.12);
-  --font: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --container: 1200px;
   --nav-height: 72px;
 }
@@ -182,7 +182,7 @@ p {
 
 .navbar {
   position: fixed;
-  top: 0;
+  top: 10px;
   left: 0;
   width: 100%;
   height: var(--nav-height);
@@ -211,6 +211,10 @@ p {
   font-weight: 800;
   font-size: 1.25rem;
   color: var(--blue);
+}
+.logo img {
+  display: block;
+  margin-top: -12px;
 }
 
 .nav-links {
@@ -557,7 +561,7 @@ p {
 
 .whitelabel {
   padding: 80px 0;
-  background: var(--white);
+  background: var(--cream);
 }
 
 .wl-grid {
@@ -605,8 +609,6 @@ p {
   width: 100%;
   max-width: 400px;
   height: auto;
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lg);
 }
 
 .solutions {
@@ -992,10 +994,12 @@ p {
 }
 
 .about-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: center;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.about-content {
+  text-align: center;
 }
 
 .about-content p { margin-bottom: 16px; }
@@ -1480,11 +1484,8 @@ p {
   <nav class="navbar" id="navbar">
     <div class="container nav-container">
       <a href="index.html" class="logo">
-        <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
-          <rect width="36" height="36" rx="10" fill="#25CB6B"/>
-          <path d="M12 18h12M18 12v12" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
-        </svg>
-        <span>Doctor Virtual</span>
+        <img src="icons/logo.png" alt="Doctor Virtual" style="height:120px;width:auto;">
+        
       </a>
       <ul class="nav-links" id="navLinks">
         <li><a href="soluciones.html" class="nav-link">Soluciones</a></li>
@@ -1514,20 +1515,6 @@ p {
         <div class="hero-ctas">
           <a href="contacto.html" class="btn btn-primary btn-lg">Solicitá una demo</a>
           <a href="casos-de-exito.html" class="btn btn-outline btn-lg">Ver casos de éxito</a>
-        </div>
-        <div class="hero-stats">
-          <div class="hero-stat">
-            <span class="hero-stat-num">3 <small>min</small></span>
-            <span class="hero-stat-label">espera promedio</span>
-          </div>
-          <div class="hero-stat">
-            <span class="hero-stat-num">92<small>%</small></span>
-            <span class="hero-stat-label">satisfacción</span>
-          </div>
-          <div class="hero-stat">
-            <span class="hero-stat-num">4<small>M+</small></span>
-            <span class="hero-stat-label">pacientes</span>
-          </div>
         </div>
       </div>
       <div class="hero-visual fade-in">
@@ -1569,7 +1556,6 @@ p {
           <span class="client-logo">Lanús</span>
           <span class="client-logo">Lomas de Zamora</span>
           <span class="client-logo">Tres Arroyos</span>
-          <span class="client-logo">Chacabuco</span>
           <span class="client-logo">Escobar</span>
           <span class="client-logo">Florencio Varela</span>
           <span class="client-logo">Meridional Seguros</span>
@@ -1599,7 +1585,6 @@ p {
           <span class="client-logo">Lanús</span>
           <span class="client-logo">Lomas de Zamora</span>
           <span class="client-logo">Tres Arroyos</span>
-          <span class="client-logo">Chacabuco</span>
           <span class="client-logo">Escobar</span>
           <span class="client-logo">Florencio Varela</span>
           <span class="client-logo">Meridional Seguros</span>
@@ -1620,24 +1605,6 @@ p {
           <p>Somos una empresa argentina de salud digital que moderniza el acceso al sistema de salud público y privado. A través de nuestra plataforma de telemedicina white-label, más de 40 organizaciones —municipios, obras sociales, prepagas, aseguradoras y empresas— brindan atención médica de calidad a sus comunidades.</p>
           <a href="nosotros.html" class="btn btn-outline" style="margin-top:24px">Conocenos</a>
         </div>
-        <div class="about-stats fade-in">
-          <div class="about-stat-card">
-            <span class="about-stat-num">4.8/5</span>
-            <span class="about-stat-label">Valoración de pacientes</span>
-          </div>
-          <div class="about-stat-card">
-            <span class="about-stat-num">25+</span>
-            <span class="about-stat-label">Municipios activos</span>
-          </div>
-          <div class="about-stat-card">
-            <span class="about-stat-num">10+</span>
-            <span class="about-stat-label">Obras sociales asociadas</span>
-          </div>
-          <div class="about-stat-card">
-            <span class="about-stat-num">+40</span>
-            <span class="about-stat-label">Organizaciones confían</span>
-          </div>
-        </div>
       </div>
     </div>
   </section>
@@ -1645,14 +1612,12 @@ p {
   <!-- ========== METRICS ========== -->
   <section class="metrics" id="metrics">
     <div class="container">
-      <div class="section-label fade-in" style="text-align:center">Datos que nos respaldan</div>
+      <div class="section-label fade-in" style="text-align:center;display:block;width:100%">Datos que nos respaldan</div>
       <h2 class="section-title fade-in" style="text-align:center;margin:0 auto 48px">Resultados que hablan por sí solos</h2>
       <div class="metrics-grid">
         <div class="metric-card bento-card fade-in">
           <span class="metric-icon">
-            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-              <path d="M16 2L20 10L29 11L22 17L24 26L16 21L8 26L10 17L3 11L12 10L16 2Z" fill="#25CB6B"/>
-            </svg>
+            <svg width="32" height="32" viewBox="0 -960 960 960" fill="#25CB6B"><path d="m320-240 160-122 160 122-60-198 160-114H544l-64-208-64 208H220l160 114-60 198ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
           </span>
           <span class="metric-number" data-target="92">0</span>
           <span class="metric-unit">%</span>
@@ -1660,10 +1625,7 @@ p {
         </div>
         <div class="metric-card bento-card fade-in">
           <span class="metric-icon">
-            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-              <circle cx="16" cy="16" r="14" stroke="#25CB6B" stroke-width="2"/>
-              <path d="M16 8v8l5 3" stroke="#25CB6B" stroke-width="2" stroke-linecap="round"/>
-            </svg>
+            <svg width="32" height="32" viewBox="0 -960 960 960" fill="#25CB6B"><path d="m612-292 56-56-148-148v-184h-80v216l172 172ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-400Zm0 320q133 0 226.5-93.5T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 133 93.5 226.5T480-160Z"/></svg>
           </span>
           <span class="metric-number" data-target="4">0</span>
           <span class="metric-unit">M+</span>
@@ -1671,9 +1633,7 @@ p {
         </div>
         <div class="metric-card bento-card fade-in">
           <span class="metric-icon">
-            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-              <path d="M4 16l8 8L28 8" stroke="#25CB6B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
+            <svg width="32" height="32" viewBox="0 -960 960 960" fill="#25CB6B"><path d="m424-312 282-282-56-56-226 226-114-114-56 56 170 170ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm0-560v560-560Z"/></svg>
           </span>
           <span class="metric-number" data-target="3">0</span>
           <span class="metric-unit">min</span>
@@ -1682,12 +1642,9 @@ p {
         </div>
         <div class="metric-card bento-card fade-in">
           <span class="metric-icon">
-            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-              <circle cx="16" cy="16" r="14" stroke="#25CB6B" stroke-width="2"/>
-              <path d="M10 16l4 4 8-8" stroke="#25CB6B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
+            <svg width="32" height="32" viewBox="0 -960 960 960" fill="#25CB6B"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
           </span>
-          <span class="metric-number" data-target="48">0</span>
+          <span class="metric-number" data-target="4.8">0</span>
           <span class="metric-unit">/5</span>
           <p class="metric-label">Valoración de pacientes</p>
         </div>
@@ -1703,30 +1660,21 @@ p {
       <div class="diffs-grid">
         <div class="diff-card bento-card fade-in">
           <div class="diff-icon">
-            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-              <rect x="4" y="8" width="32" height="24" rx="3" stroke="#25CB6B" stroke-width="2"/>
-              <path d="M12 16h16M12 22h10" stroke="#25CB6B" stroke-width="2" stroke-linecap="round"/>
-            </svg>
+            <svg width="40" height="40" viewBox="0 -960 960 960" fill="#25CB6B"><path d="M200-280h560v-80H200v80Zm0-160h560v-80H200v80Zm0-160h400v-80H200v80Zm-40 440q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm0-80h640v-480H160v480Zm0 0v-480 480Z"/></svg>
           </div>
           <h3>Marca blanca</h3>
           <p>La plataforma con el branding de cada cliente. Tu logo, tus colores, tu dominio.</p>
         </div>
         <div class="diff-card bento-card fade-in">
           <div class="diff-icon">
-            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-              <circle cx="20" cy="16" r="8" stroke="#25CB6B" stroke-width="2"/>
-              <path d="M12 32c0-4.4 3.6-8 8-8s8 3.6 8 8" stroke="#25CB6B" stroke-width="2" stroke-linecap="round"/>
-            </svg>
+            <svg width="40" height="40" viewBox="0 -960 960 960" fill="#25CB6B"><path d="M420-280h120v-100h100v-120H540v-100H420v100H320v120h100v100ZM160-120v-480l320-240 320 240v480H160Zm80-80h480v-360L480-740 240-560v360Zm240-270Z"/></svg>
           </div>
           <h3>Múltiples especialidades</h3>
           <p>Más de 12 especialidades médicas disponibles 24/7 vía videollamada.</p>
         </div>
         <div class="diff-card bento-card fade-in">
           <div class="diff-icon">
-            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-              <path d="M8 20l8-8 6 6L34 8" stroke="#25CB6B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M28 8h6v6" stroke="#25CB6B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
+            <svg width="40" height="40" viewBox="0 -960 960 960" fill="#25CB6B"><path d="m438-338 226-226-57-57-169 169-84-84-57 57 141 141Zm42 258q-139-35-229.5-159.5T160-516v-244l320-120 320 120v244q0 152-90.5 276.5T480-80Zm0-84q104-33 172-132t68-220v-189l-240-90-240 90v189q0 121 68 220t172 132Zm0-316Z"/></svg>
           </div>
           <h3>Habilitación Ministerio de Salud</h3>
           <p>Plataforma que cumple con los marcos regulatorios vigentes en Argentina.</p>
@@ -1780,11 +1728,7 @@ p {
       <div class="solutions-grid">
         <div class="solution-card bento-card fade-in">
           <div class="solution-icon">
-            <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-              <rect x="8" y="12" width="32" height="24" rx="4" stroke="#25CB6B" stroke-width="2"/>
-              <circle cx="24" cy="24" r="6" stroke="#25CB6B" stroke-width="2"/>
-              <path d="M16 20v8M32 20v8" stroke="#25CB6B" stroke-width="2" stroke-linecap="round"/>
-            </svg>
+            <svg width="48" height="48" viewBox="0 -960 960 960" fill="#25CB6B"><path d="M420-280h120v-100h100v-120H540v-100H420v100H320v120h100v100ZM160-120v-480l320-240 320 240v480H160Zm80-80h480v-360L480-740 240-560v360Zm240-270Z"/></svg>
           </div>
           <h3>Telemedicina 24/7</h3>
           <p>Consultas por videollamada con múltiples especialidades, recetas y certificados digitales.</p>
@@ -1792,10 +1736,7 @@ p {
         </div>
         <div class="solution-card bento-card fade-in">
           <div class="solution-icon">
-            <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-              <rect x="8" y="10" width="32" height="28" rx="4" stroke="#25CB6B" stroke-width="2"/>
-              <path d="M16 18h16M16 24h12M16 30h8" stroke="#25CB6B" stroke-width="2" stroke-linecap="round"/>
-            </svg>
+            <svg width="48" height="48" viewBox="0 -960 960 960" fill="#25CB6B"><path d="M200-280h560v-80H200v80Zm0-160h560v-80H200v80Zm0-160h400v-80H200v80Zm-40 440q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm0-80h640v-480H160v480Zm0 0v-480 480Z"/></svg>
           </div>
           <h3>Sala de espera virtual</h3>
           <p>Contenido audiovisual educativo mientras el paciente espera su atención. Sin espera presencial.</p>
@@ -1803,11 +1744,7 @@ p {
         </div>
         <div class="solution-card bento-card fade-in">
           <div class="solution-icon">
-            <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-              <path d="M24 6c-4 0-8 6-8 12s4 8 8 8 8-2 8-8-4-12-8-12z" stroke="#25CB6B" stroke-width="2"/>
-              <path d="M14 34c0-5 4.5-8 10-8s10 3 10 8" stroke="#25CB6B" stroke-width="2" stroke-linecap="round"/>
-              <circle cx="24" cy="14" r="2" fill="#25CB6B"/>
-            </svg>
+            <svg width="48" height="48" viewBox="0 -960 960 960" fill="#25CB6B"><path d="m438-338 226-226-57-57-169 169-84-84-57 57 141 141Zm42 258q-139-35-229.5-159.5T160-516v-244l320-120 320 120v244q0 152-90.5 276.5T480-80Zm0-84q104-33 172-132t68-220v-189l-240-90-240 90v189q0 121 68 220t172 132Zm0-316Z"/></svg>
           </div>
           <h3>Programa de Salud Mental</h3>
           <p>Primera escucha psicológica 24/7 con derivación asistida cuando se requiere.</p>
@@ -1815,11 +1752,7 @@ p {
         </div>
         <div class="solution-card bento-card fade-in">
           <div class="solution-icon">
-            <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-              <rect x="6" y="12" width="36" height="24" rx="4" stroke="#25CB6B" stroke-width="2"/>
-              <rect x="10" y="16" width="28" height="16" rx="2" fill="#25CB6B" fill-opacity="0.1"/>
-              <path d="M18 24h12M24 20v8" stroke="#25CB6B" stroke-width="2" stroke-linecap="round"/>
-            </svg>
+            <svg width="48" height="48" viewBox="0 -960 960 960" fill="#25CB6B"><path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/></svg>
           </div>
           <h3>Consultorios Virtuales (Tótems)</h3>
           <p>Unidades físicas de atención médica virtual instaladas en espacios públicos.</p>
@@ -1840,52 +1773,52 @@ p {
       <div class="specialties-grid fade-in">
         <div class="specialty-item">
           <span class="specialty-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 4v16M4 12h16" stroke="#25CB6B" stroke-width="2" stroke-linecap="round"/></svg>
+            <svg width="24" height="24" viewBox="0 -960 960 960" fill="#25CB6B"><path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/></svg>
           </span>
           <span>Clínica médica</span>
         </div>
         <div class="specialty-item">
-          <span class="specialty-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 4v16M4 12h16" stroke="#25CB6B" stroke-width="2" stroke-linecap="round"/></svg></span>
+          <span class="specialty-icon"><svg width="24" height="24" viewBox="0 -960 960 960" fill="#25CB6B"><path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/></svg></span>
           <span>Pediatría</span>
         </div>
         <div class="specialty-item">
-          <span class="specialty-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 4v16M4 12h16" stroke="#25CB6B" stroke-width="2" stroke-linecap="round"/></svg></span>
+          <span class="specialty-icon"><svg width="24" height="24" viewBox="0 -960 960 960" fill="#25CB6B"><path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/></svg></span>
           <span>Ginecología</span>
         </div>
         <div class="specialty-item">
-          <span class="specialty-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 4v16M4 12h16" stroke="#25CB6B" stroke-width="2" stroke-linecap="round"/></svg></span>
+          <span class="specialty-icon"><svg width="24" height="24" viewBox="0 -960 960 960" fill="#25CB6B"><path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/></svg></span>
           <span>Dermatología</span>
         </div>
         <div class="specialty-item">
-          <span class="specialty-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 4v16M4 12h16" stroke="#25CB6B" stroke-width="2" stroke-linecap="round"/></svg></span>
+          <span class="specialty-icon"><svg width="24" height="24" viewBox="0 -960 960 960" fill="#25CB6B"><path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/></svg></span>
           <span>Salud mental</span>
         </div>
         <div class="specialty-item">
-          <span class="specialty-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 4v16M4 12h16" stroke="#25CB6B" stroke-width="2" stroke-linecap="round"/></svg></span>
+          <span class="specialty-icon"><svg width="24" height="24" viewBox="0 -960 960 960" fill="#25CB6B"><path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/></svg></span>
           <span>Nutrición</span>
         </div>
         <div class="specialty-item">
-          <span class="specialty-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 4v16M4 12h16" stroke="#25CB6B" stroke-width="2" stroke-linecap="round"/></svg></span>
+          <span class="specialty-icon"><svg width="24" height="24" viewBox="0 -960 960 960" fill="#25CB6B"><path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/></svg></span>
           <span>Cardiología</span>
         </div>
         <div class="specialty-item">
-          <span class="specialty-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 4v16M4 12h16" stroke="#25CB6B" stroke-width="2" stroke-linecap="round"/></svg></span>
+          <span class="specialty-icon"><svg width="24" height="24" viewBox="0 -960 960 960" fill="#25CB6B"><path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/></svg></span>
           <span>Traumatología</span>
         </div>
         <div class="specialty-item">
-          <span class="specialty-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 4v16M4 12h16" stroke="#25CB6B" stroke-width="2" stroke-linecap="round"/></svg></span>
+          <span class="specialty-icon"><svg width="24" height="24" viewBox="0 -960 960 960" fill="#25CB6B"><path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/></svg></span>
           <span>Oftalmología</span>
         </div>
         <div class="specialty-item">
-          <span class="specialty-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 4v16M4 12h16" stroke="#25CB6B" stroke-width="2" stroke-linecap="round"/></svg></span>
+          <span class="specialty-icon"><svg width="24" height="24" viewBox="0 -960 960 960" fill="#25CB6B"><path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/></svg></span>
           <span>Neurología</span>
         </div>
         <div class="specialty-item">
-          <span class="specialty-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 4v16M4 12h16" stroke="#25CB6B" stroke-width="2" stroke-linecap="round"/></svg></span>
+          <span class="specialty-icon"><svg width="24" height="24" viewBox="0 -960 960 960" fill="#25CB6B"><path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/></svg></span>
           <span>Endocrinología</span>
         </div>
         <div class="specialty-item">
-          <span class="specialty-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 4v16M4 12h16" stroke="#25CB6B" stroke-width="2" stroke-linecap="round"/></svg></span>
+          <span class="specialty-icon"><svg width="24" height="24" viewBox="0 -960 960 960" fill="#25CB6B"><path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/></svg></span>
           <span>Neumonología</span>
         </div>
       </div>
@@ -1901,10 +1834,7 @@ p {
         <a href="municipios.html" class="sector-card bento-card fade-in">
           <div class="sector-card-top">
             <div class="sector-icon">
-              <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-                <rect x="4" y="8" width="32" height="24" rx="3" stroke="#25CB6B" stroke-width="2"/>
-                <path d="M12 16l4 4 6-6" stroke="#25CB6B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
+              <svg width="40" height="40" viewBox="0 -960 960 960" fill="#25CB6B"><path d="m438-338 226-226-57-57-169 169-84-84-57 57 141 141Zm42 258q-139-35-229.5-159.5T160-516v-244l320-120 320 120v244q0 152-90.5 276.5T480-80Zm0-84q104-33 172-132t68-220v-189l-240-90-240 90v189q0 121 68 220t172 132Zm0-316Z"/></svg>
             </div>
             <span class="sector-tag">Público</span>
           </div>
@@ -1914,16 +1844,12 @@ p {
             <li>Gran porcentaje de casos resueltos mediante videollamada</li>
             <li>Acceso al sistema público de salud online</li>
           </ul>
-          <span class="sector-cta">Ver más <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+          <span class="sector-cta">Ver más <svg width="16" height="16" viewBox="0 -960 960 960" fill="currentColor"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/></svg></span>
         </a>
         <a href="empresas.html" class="sector-card bento-card fade-in">
           <div class="sector-card-top">
             <div class="sector-icon">
-              <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-                <rect x="6" y="8" width="28" height="24" rx="3" stroke="#25CB6B" stroke-width="2"/>
-                <circle cx="20" cy="18" r="4" stroke="#25CB6B" stroke-width="2"/>
-                <path d="M14 28c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="#25CB6B" stroke-width="2" stroke-linecap="round"/>
-              </svg>
+              <svg width="40" height="40" viewBox="0 -960 960 960" fill="#25CB6B"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
             </div>
             <span class="sector-tag">Empresas</span>
           </div>
@@ -1933,15 +1859,12 @@ p {
             <li>Fideliza a tus empleados con un beneficio innovador</li>
             <li>Fortalece la imagen corporativa y el clima laboral</li>
           </ul>
-          <span class="sector-cta">Ver más <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+          <span class="sector-cta">Ver más <svg width="16" height="16" viewBox="0 -960 960 960" fill="currentColor"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/></svg></span>
         </a>
         <a href="obras-sociales.html" class="sector-card bento-card fade-in">
           <div class="sector-card-top">
             <div class="sector-icon">
-              <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-                <path d="M8 6h24v28H8z" stroke="#25CB6B" stroke-width="2"/>
-                <path d="M16 6v28M24 6v28" stroke="#25CB6B" stroke-width="2"/>
-              </svg>
+              <svg width="40" height="40" viewBox="0 -960 960 960" fill="#25CB6B"><path d="M420-280h120v-100h100v-120H540v-100H420v100H320v120h100v100ZM160-120v-480l320-240 320 240v480H160Zm80-80h480v-360L480-740 240-560v360Zm240-270Z"/></svg>
             </div>
             <span class="sector-tag">Salud</span>
           </div>
@@ -1951,15 +1874,12 @@ p {
             <li>El 85% de los casos son resueltos durante la videollamada</li>
             <li>Vademécum online e historia clínica digital</li>
           </ul>
-          <span class="sector-cta">Ver más <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+          <span class="sector-cta">Ver más <svg width="16" height="16" viewBox="0 -960 960 960" fill="currentColor"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/></svg></span>
         </a>
         <a href="aseguradoras.html" class="sector-card bento-card fade-in">
           <div class="sector-card-top">
             <div class="sector-icon">
-              <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-                <path d="M6 14l14-8 14 8v12l-14 8-14-8V14z" stroke="#25CB6B" stroke-width="2"/>
-                <path d="M14 18l6 4 8-6" stroke="#25CB6B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
+              <svg width="40" height="40" viewBox="0 -960 960 960" fill="#25CB6B"><path d="m438-338 226-226-57-57-169 169-84-84-57 57 141 141Zm42 258q-139-35-229.5-159.5T160-516v-244l320-120 320 120v244q0 152-90.5 276.5T480-80Zm0-84q104-33 172-132t68-220v-189l-240-90-240 90v189q0 121 68 220t172 132Zm0-316Z"/></svg>
             </div>
             <span class="sector-tag">Seguros</span>
           </div>
@@ -1969,7 +1889,7 @@ p {
             <li>Brinda un beneficio atractivo relacionado con la salud del asegurado y su familia</li>
             <li>Fideliza a tus asegurados y clientes</li>
           </ul>
-          <span class="sector-cta">Ver más <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+          <span class="sector-cta">Ver más <svg width="16" height="16" viewBox="0 -960 960 960" fill="currentColor"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/></svg></span>
         </a>
       </div>
     </div>
@@ -2048,11 +1968,8 @@ p {
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="index.html" class="logo">
-            <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
-              <rect width="36" height="36" rx="10" fill="#25CB6B"/>
-              <path d="M12 18h12M18 12v12" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
-            </svg>
-            <span>Doctor Virtual</span>
+            <img src="icons/logo.png" alt="Doctor Virtual" style="height:64px;width:auto;">
+            
           </a>
           <p>Transformamos el acceso a la salud pública y privada a través de nuestra plataforma de telemedicina white-label.</p>
           <div class="footer-social">
@@ -2090,7 +2007,7 @@ p {
         <div class="footer-contact">
           <h4>Contacto</h4>
           <p>Av. Córdoba 991, 1° piso<br/>CABA, Argentina</p>
-          <a href="mailto:contacto@doctorvirtual.ai">contacto@doctorvirtual.ai</a>
+          <a href="mailto:contacto@doctorvirtual.com">contacto@doctorvirtual.com</a>
         </div>
       </div>
       <div class="footer-bottom">

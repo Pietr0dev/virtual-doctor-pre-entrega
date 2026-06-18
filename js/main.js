@@ -54,7 +54,7 @@ function animateCounters() {
   countersStarted = true;
 
   metricNumbers.forEach(counter => {
-    const target = parseInt(counter.dataset.target);
+    const target = parseFloat(counter.dataset.target);
     const duration = 2000;
     const steps = 60;
     const increment = target / steps;
@@ -65,10 +65,10 @@ function animateCounters() {
     const updateCounter = () => {
       current += increment;
       if (current >= target) {
-        counter.textContent = target;
+        counter.textContent = Number.isInteger(target) ? target : target.toFixed(1);
         return;
       }
-      counter.textContent = Math.floor(current);
+      counter.textContent = Number.isInteger(target) ? Math.floor(current) : current.toFixed(1);
       requestAnimationFrame(updateCounter);
     };
 
