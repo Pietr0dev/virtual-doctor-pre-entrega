@@ -235,3 +235,56 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     }
   });
 });
+
+// ========== VERTICAL CAROUSEL ==========
+const carouselTrack = document.querySelector('.carousel-track');
+const slides = document.querySelectorAll('.carousel-slide');
+const dotsContainer = document.querySelector('.carousel-dots');
+
+if (carouselTrack && slides.length) {
+  let currentIndex = 0;
+  const slideCount = slides.length;
+  let interval;
+
+  function goToSlide(index) {
+    currentIndex = index;
+    const slideHeight = slides[0].offsetHeight;
+    carouselTrack.style.transform = `translateY(-${currentIndex * slideHeight}px)`;
+    document.querySelectorAll('.carousel-dot').forEach((dot, i) => {
+      dot.classList.toggle('active', i === currentIndex);
+    });
+  }
+
+  function nextSlide() {
+    goToSlide((currentIndex + 1) % slideCount);
+  }
+
+  function startAutoPlay() {
+    stopAutoPlay();
+    interval = setInterval(nextSlide, 2000);
+  }
+
+  function stopAutoPlay() {
+    clearInterval(interval);
+  }
+
+  slides.forEach((slide, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', `Ir al logo ${i + 1}`);
+    dot.addEventListener('click', () => {
+      goToSlide(i);
+      startAutoPlay();
+    });
+    dotsContainer.appendChild(dot);
+  });
+
+  goToSlide(0);
+  startAutoPlay();
+
+  const carousel = carouselTrack.closest('.clients-carousel');
+  if (carousel) {
+    carousel.addEventListener('mouseenter', stopAutoPlay);
+    carousel.addEventListener('mouseleave', startAutoPlay);
+  }
+}
