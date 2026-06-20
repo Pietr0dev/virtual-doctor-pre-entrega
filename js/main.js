@@ -237,54 +237,40 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // ========== VERTICAL CAROUSEL ==========
-const carouselTrack = document.querySelector('.carousel-track');
-const slides = document.querySelectorAll('.carousel-slide');
-const dotsContainer = document.querySelector('.carousel-dots');
+function initCarousel(container) {
+  const track = container.querySelector('.carousel-track');
+  const slides = container.querySelectorAll('.carousel-slide');
+  if (!track || !slides.length) return;
 
-if (carouselTrack && slides.length) {
   let currentIndex = 0;
   const slideCount = slides.length;
-  let interval;
+  const delay = 2000;
+  let timer;
 
   function goToSlide(index) {
     currentIndex = index;
     const slideHeight = slides[0].offsetHeight;
-    carouselTrack.style.transform = `translateY(-${currentIndex * slideHeight}px)`;
-    document.querySelectorAll('.carousel-dot').forEach((dot, i) => {
-      dot.classList.toggle('active', i === currentIndex);
-    });
+    track.style.transform = `translateY(-${currentIndex * slideHeight}px)`;
   }
 
   function nextSlide() {
     goToSlide((currentIndex + 1) % slideCount);
+    scheduleNext();
   }
 
-  function startAutoPlay() {
-    stopAutoPlay();
-    interval = setInterval(nextSlide, 2000);
+  function scheduleNext() {
+    timer = setTimeout(nextSlide, delay);
   }
 
   function stopAutoPlay() {
-    clearInterval(interval);
+    clearTimeout(timer);
   }
-
-  slides.forEach((slide, i) => {
-    const dot = document.createElement('button');
-    dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
-    dot.setAttribute('aria-label', `Ir al logo ${i + 1}`);
-    dot.addEventListener('click', () => {
-      goToSlide(i);
-      startAutoPlay();
-    });
-    dotsContainer.appendChild(dot);
-  });
 
   goToSlide(0);
-  startAutoPlay();
+  scheduleNext();
 
-  const carousel = carouselTrack.closest('.clients-carousel');
-  if (carousel) {
-    carousel.addEventListener('mouseenter', stopAutoPlay);
-    carousel.addEventListener('mouseleave', startAutoPlay);
-  }
+  container.addEventListener('mouseenter', stopAutoPlay);
+  container.addEventListener('mouseleave', scheduleNext);
 }
+
+document.querySelectorAll('.clients-carousel').forEach(initCarousel);
