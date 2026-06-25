@@ -1617,6 +1617,7 @@ p {
   .wl-features { align-items: center; }
 
   .cases-grid { grid-template-columns: 1fr 1fr; }
+  .planes-grid { max-width: 100%; }
 
   .footer-grid { grid-template-columns: 1fr 1fr; }
 
@@ -1671,6 +1672,7 @@ p {
   .solutions-grid { grid-template-columns: 1fr; }
   .sectors-grid { grid-template-columns: 1fr; }
   .cases-grid { grid-template-columns: 1fr; }
+  .planes-grid { max-width: 100%; }
 
   .form-row { grid-template-columns: 1fr; }
 
@@ -1690,6 +1692,7 @@ p {
   .case-detailed-results { grid-template-columns: 1fr 1fr; }
   .sectors-detail-grid { grid-template-columns: 1fr; }
   .cases-detailed-grid { grid-template-columns: 1fr; }
+
 
   /* ========== VERTICAL TABS → ACCORDION ========== */
   .vtab-wrapper {
@@ -1793,6 +1796,98 @@ p {
     align-items: center;
   }
 }
+
+/* ========== PLANES ========== */
+.planes {
+  padding: 80px 0;
+  background: var(--white);
+}
+.planes-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  max-width: 520px;
+  margin: 0 auto;
+}
+.plan-card {
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  position: relative;
+}
+.plan-featured {
+  border: 2px solid var(--green);
+}
+.plan-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--green);
+  color: var(--white);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 4px 16px;
+  border-radius: 20px;
+}
+.plan-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.plan-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(37, 203, 107, 0.1);
+  flex-shrink: 0;
+}
+.plan-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--blue);
+  margin: 0;
+}
+.plan-desc {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--text-light);
+  margin-bottom: 20px;
+}
+.plan-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px;
+  flex: 1;
+}
+.plan-features li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.875rem;
+  color: var(--text);
+  padding: 6px 0;
+}
+.plan-features li::before {
+  content: "";
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--green);
+  flex-shrink: 0;
+}
+.plan-btn {
+  width: 100%;
+}
+
+/* ========== BANNER PLAN METABÓLICO ========== */
 
 @media (max-width: 480px) {
   .container { padding: 0 16px; }

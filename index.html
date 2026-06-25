@@ -59,6 +59,18 @@ body {
   overflow-x: hidden;
 }
 
+.bg-container {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: url('Fotos/doctor-offering-medical-teleconsultation.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  transform: scale(10);
+}
+
 img { max-width: 100%; display: block; }
 a { text-decoration: none; color: inherit; }
 ul { list-style: none; }
@@ -451,10 +463,6 @@ p {
   animation: marquee 50s linear infinite;
 }
 
-.clients-track:hover {
-  animation-play-state: paused;
-}
-
 @keyframes marquee {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
@@ -466,10 +474,8 @@ p {
   color: var(--white);
   letter-spacing: 0.02em;
   white-space: nowrap;
-  transition: opacity 0.3s;
   flex-shrink: 0;
 }
-.client-logo:hover { opacity: 0.6; }
 
 .metrics {
   padding: 80px 0;
@@ -1384,6 +1390,11 @@ p {
   transform: translateY(0);
 }
 
+.sectors-grid .sector-card:nth-child(1) { transition-delay: 0s; }
+.sectors-grid .sector-card:nth-child(2) { transition-delay: 0.15s; }
+.sectors-grid .sector-card:nth-child(3) { transition-delay: 0.3s; }
+.sectors-grid .sector-card:nth-child(4) { transition-delay: 0.45s; }
+
 @media (max-width: 1024px) {
   .hero-grid { grid-template-columns: 1fr; text-align: center; }
   .hero-content { max-width: 100%; }
@@ -1478,6 +1489,8 @@ p {
 </style>
 </head>
 <body>
+
+  <div class="bg-container"></div>
 
   <!-- ========== NAVBAR ========== -->
   <nav class="navbar" id="navbar">
@@ -1904,48 +1917,24 @@ p {
     </div>
   </section>
 
-  <!-- ========== CASE STUDIES ========== -->
-  <section class="cases" id="casos">
-    <div class="container">
-      <div class="section-label fade-in">Casos de éxito</div>
-      <h2 class="section-title fade-in">Resultados que hablan por sí solos</h2>
-      <div class="cases-grid">
-        <div class="case-card bento-card fade-in">
-          <div class="case-header">
-            <span class="case-logo">OBSBA</span>
-            <span class="case-tag">Municipio</span>
-          </div>
-          <blockquote>"La implementación de Doctor Virtual nos permitió multiplicar nuestra capacidad de atención y mejorar significativamente la experiencia de nuestros afiliados."</blockquote>
-          <div class="case-result">
-            <span class="case-stat">+120K</span>
-            <span class="case-stat-label">consultas virtuales al año</span>
-          </div>
-        </div>
-        <div class="case-card bento-card fade-in">
-          <div class="case-header">
-            <span class="case-logo">Unión Personal</span>
-            <span class="case-tag">Obra Social</span>
-          </div>
-          <blockquote>"Logramos que el 92% de los afiliados valore el servicio como excelente. El tiempo de espera pasó de 3 horas a 3 minutos."</blockquote>
-          <div class="case-result">
-            <span class="case-stat">98%</span>
-            <span class="case-stat-label">de adherencia al programa</span>
-          </div>
-        </div>
-        <div class="case-card bento-card fade-in">
-          <div class="case-header">
-            <span class="case-logo">OSEP</span>
-            <span class="case-tag">Provincia</span>
-          </div>
-          <blockquote>"Implementamos telemedicina en 40 centros de atención primaria en 3 meses. Hoy es el canal de consulta más usado."</blockquote>
-          <div class="case-result">
-            <span class="case-stat">40</span>
-            <span class="case-stat-label">centros conectados</span>
-          </div>
+
+
+  <!-- ========== BANNER PLAN METABÓLICO ========== -->
+  <section class="hero" id="plan-metabolico" style="padding:80px 0;background:var(--cream);">
+    <div class="container hero-grid">
+      <div class="hero-visual">
+        <div class="hero-mockup-wrapper">
+          <img src="Fotos/doctor-offering-medical-teleconsultation.jpg" alt="Plan Metabólico" class="hero-image" style="border-radius:var(--radius-lg);max-height:400px;width:auto;" />
+          <div class="hero-shape"></div>
         </div>
       </div>
-      <div class="section-footer-link fade-in">
-        <a href="casos-de-exito.html" class="btn btn-outline">Ver todos los casos</a>
+      <div class="hero-content">
+        <span class="badge" style="font-size:1.25rem;padding:10px 24px;">Plan Metabólico</span>
+        <h1>Transformá tu salud con nuestro <span style="color:var(--green)">plan integral</span></h1>
+        <p class="hero-sub">Programa diseñado bajo un enfoque interdisciplinario, donde cada paciente recibe un abordaje personalizado según sus objetivos, estado clínico, composición corporal y hábitos de vida.</p>
+        <div class="hero-ctas">
+          <a href="https://planmetabolico.drvirtual.ai/login" class="btn btn-primary btn-lg" target="_blank" rel="noopener noreferrer">Comenzá ahora</a>
+        </div>
       </div>
     </div>
   </section>
