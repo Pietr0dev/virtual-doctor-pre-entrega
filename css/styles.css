@@ -152,11 +152,11 @@ p {
 /* ========== BADGE ========== */
 .badge {
   display: inline-block;
-  font-size: 0.8125rem;
+  font-size: 1.25rem;
   font-weight: 600;
   color: var(--green);
   background: var(--green-light);
-  padding: 6px 14px;
+  padding: 9px 21px;
   border-radius: 100px;
   margin-bottom: 20px;
 }
