@@ -594,7 +594,7 @@ p {
   background: var(--white);
   border: 1px solid var(--gray-100);
   border-radius: var(--radius-lg);
-  padding: 32px;
+  padding: 24px;
   transition: all 0.35s ease;
 }
 .bento-card:hover {
@@ -1440,13 +1440,13 @@ p {
   gap: 24px;
 }
 
-.case-detailed { display: flex; flex-direction: column; }
+.case-detailed { display: flex; flex-direction: column; gap: 16px; }
+.case-detailed.compact { align-self: start; }
 
 .case-detailed-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 16px;
 }
 
 .case-detailed-role {
@@ -1460,7 +1460,6 @@ p {
   font-size: 0.9375rem;
   color: var(--gray-500);
   line-height: 1.7;
-  margin-bottom: 20px;
   flex: 1;
 }
 
